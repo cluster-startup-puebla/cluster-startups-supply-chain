@@ -1,0 +1,7 @@
+{
+  "HomePage": {
+    "title": "Bienvenido a {appName}",
+    "description": "Esta es una aplicación Next.js con soporte i18n",
+    "hello": "Hola Mundo"
+  }
+}
