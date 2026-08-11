@@ -1,7 +1,29 @@
 {
-  "HomePage": {
-    "title": "Bienvenido a {appName}",
-    "description": "Esta es una aplicación Next.js con soporte i18n",
-    "hello": "Hola Mundo"
+  "nav": {
+    "home": "Inicio",
+    "companies": "Empresas",
+    "needs": "Necesidades"
+  },
+  "home": {
+    "title": "Capim Mexico Supply Chain",
+    "description": "Plataforma de cadena de suministro para empresas mexicanas"
+  },
+  "companies": {
+    "title": "Empresas",
+    "list": "Listado de empresas",
+    "viewDetail": "Ver detalle"
+  },
+  "companyDetail": {
+    "title": "Detalle de Empresa"
+  },
+  "needs": {
+    "title": "Necesidades",
+    "description": "Cuéntanos sobre tus necesidades",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "message": "Mensaje",
+      "submit": "Enviar"
+    }
   }
 }

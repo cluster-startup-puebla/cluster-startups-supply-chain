@@ -1,7 +1,29 @@
 {
-  "HomePage": {
-    "title": "Welcome to {appName}",
-    "description": "This is a Next.js app with i18n support",
-    "hello": "Hello World"
+  "nav": {
+    "home": "Home",
+    "companies": "Companies",
+    "needs": "Needs"
+  },
+  "home": {
+    "title": "Capim Mexico Supply Chain",
+    "description": "Supply chain platform for Mexican companies"
+  },
+  "companies": {
+    "title": "Companies",
+    "list": "Companies list",
+    "viewDetail": "View detail"
+  },
+  "companyDetail": {
+    "title": "Company Detail"
+  },
+  "needs": {
+    "title": "Needs",
+    "description": "Tell us about your needs",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Submit"
+    }
   }
 }
