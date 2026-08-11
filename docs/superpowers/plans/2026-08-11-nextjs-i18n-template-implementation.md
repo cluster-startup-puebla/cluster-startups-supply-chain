@@ -10,12 +10,47 @@
 
 ---
 
+## Implementation notes (completed 2026-08-11)
+
+The plan was implemented in full. Five deviations were required by the
+installed stack — the repo has **Next.js 16.3.0**, not 15:
+
+1. **`src/middleware.ts` → `src/proxy.ts`.** The `middleware` file convention is
+   deprecated in Next.js 16 and renamed to `proxy`. The matcher was widened to
+   `['/((?!api|_next|_vercel|.*\\..*).*)']` so unprefixed paths also redirect.
+2. **Localized pathnames added to `src/i18n/routing.ts`.** Task 10 Step 5 expects
+   `/en/companies` and `/en/needs`, which the Task 2 routing config could not
+   serve. A `pathnames` map now routes `/es/empresas` ↔ `/en/companies` and
+   `/es/necesidades` ↔ `/en/needs` onto the same page files.
+3. **`src/i18n/navigation.ts` added.** Localized pathnames require next-intl's
+   `createNavigation` helpers; pages use its `Link`, not `next/link`, so hrefs
+   resolve per locale. The language switcher likewise uses its `usePathname` /
+   `useRouter` — the plan's `pathname.replace(/^\/(es|en)/, '')` regex would
+   produce non-existent URLs such as `/es/companies`.
+4. **Next.js 16 typed route helpers** (`PageProps<'/[locale]'>`,
+   `LayoutProps<'/[locale]'>`) replace the hand-written
+   `params: Promise<{locale: string}>` annotations.
+5. **`getDictionary` takes the `Locale` union from `@/i18n/routing`**, not
+   `Locale` from `next-intl` (which is `string` and fails to index the
+   dictionaries map under `strict`).
+
+Minor: pages use Tailwind utility classes instead of the plan's inline `style`
+objects, and the locale layout keeps the Geist fonts wired up by
+`create-next-app` because `globals.css` references those CSS variables.
+
+Verified: `npm run build` and `npm run lint` pass; all six localized routes
+return 200, `/` redirects to `/es` (and to `/en` under `Accept-Language: en`),
+and the switcher was exercised in-browser on static and dynamic routes
+(`/en/companies/acme` → `/es/empresas/acme`, slug preserved).
+
+---
+
 ## Task 1: Initialize Next.js Project
 
 **Files:**
 - Create: `package.json`, `tsconfig.json`, `next.config.ts`, `tailwind.config.ts`, `postcss.config.mjs`, `.gitignore`, `src/app/layout.tsx`, `src/app/globals.css`
 
-- [ ] **Step 1: Create Next.js project with create-next-app**
+- [x] **Step 1: Create Next.js project with create-next-app**
 
 Run in project root directory:
 ```bash
@@ -30,7 +65,7 @@ Select options:
 - App Router: Yes
 - Import alias: `@/*`
 
-- [ ] **Step 2: Verify project runs**
+- [x] **Step 2: Verify project runs**
 
 ```bash
 npm run dev
@@ -38,7 +73,7 @@ npm run dev
 
 Expected: Server starts on http://localhost:3000
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add .
@@ -53,13 +88,13 @@ git commit -m "feat: initialize Next.js 15 with Tailwind CSS"
 - Create: `src/i18n/routing.ts`, `src/i18n/request.ts`, `src/middleware.ts`
 - Modify: `next.config.ts`
 
-- [ ] **Step 1: Install next-intl**
+- [x] **Step 1: Install next-intl**
 
 ```bash
 npm install next-intl
 ```
 
-- [ ] **Step 2: Create i18n routing config**
+- [x] **Step 2: Create i18n routing config**
 
 Create `src/i18n/routing.ts`:
 ```typescript
@@ -71,7 +106,7 @@ export const routing = defineRouting({
 });
 ```
 
-- [ ] **Step 3: Create request config**
+- [x] **Step 3: Create request config**
 
 Create `src/i18n/request.ts`:
 ```typescript
@@ -92,7 +127,7 @@ export default getRequestConfig(async ({requestLocale}) => {
 });
 ```
 
-- [ ] **Step 4: Update next.config.ts**
+- [x] **Step 4: Update next.config.ts**
 
 Replace `next.config.ts` content:
 ```typescript
@@ -106,7 +141,7 @@ const nextConfig: NextConfig = {};
 export default withNextIntl(nextConfig);
 ```
 
-- [ ] **Step 5: Create middleware**
+- [x] **Step 5: Create middleware**
 
 Create `src/middleware.ts`:
 ```typescript
@@ -120,7 +155,7 @@ export const config = {
 };
 ```
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/i18n/ src/middleware.ts next.config.ts
@@ -134,7 +169,7 @@ git commit -m "feat: configure next-intl with es/en locales"
 **Files:**
 - Create: `src/messages/es.json`, `src/messages/en.json`
 
-- [ ] **Step 1: Create Spanish dictionary**
+- [x] **Step 1: Create Spanish dictionary**
 
 Create `src/messages/es.json`:
 ```json
@@ -169,7 +204,7 @@ Create `src/messages/es.json`:
 }
 ```
 
-- [ ] **Step 2: Create English dictionary**
+- [x] **Step 2: Create English dictionary**
 
 Create `src/messages/en.json`:
 ```json
@@ -204,7 +239,7 @@ Create `src/messages/en.json`:
 }
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/messages/
@@ -218,7 +253,7 @@ git commit -m "feat: add es/en translation dictionaries"
 **Files:**
 - Create: `src/lib/dictionaries.ts`
 
-- [ ] **Step 1: Create dictionary loader**
+- [x] **Step 1: Create dictionary loader**
 
 Create `src/lib/dictionaries.ts`:
 ```typescript
@@ -234,7 +269,7 @@ export const getDictionary = async (locale: Locale) => {
 };
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src/lib/dictionaries.ts
@@ -248,7 +283,7 @@ git commit -m "feat: add dictionary loading utility"
 **Files:**
 - Modify: `src/app/[locale]/layout.tsx`
 
-- [ ] **Step 1: Create locale layout**
+- [x] **Step 1: Create locale layout**
 
 Create `src/app/[locale]/layout.tsx`:
 ```typescript
@@ -284,11 +319,11 @@ export default async function LocaleLayout({
 }
 ```
 
-- [ ] **Step 2: Remove default layout**
+- [x] **Step 2: Remove default layout**
 
 Delete `src/app/layout.tsx` (or move to `[locale]` folder if needed)
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/app/
@@ -302,7 +337,7 @@ git commit -m "feat: create locale-aware root layout"
 **Files:**
 - Create: `src/app/[locale]/page.tsx`
 
-- [ ] **Step 1: Create landing page**
+- [x] **Step 1: Create landing page**
 
 Create `src/app/[locale]/page.tsx`:
 ```typescript
@@ -343,7 +378,7 @@ function HomePageContent() {
 }
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src/app/\[locale\]/page.tsx
@@ -357,7 +392,7 @@ git commit -m "feat: create landing page with i18n"
 **Files:**
 - Create: `src/app/[locale]/empresas/page.tsx`, `src/app/[locale]/empresas/[slug]/page.tsx`
 
-- [ ] **Step 1: Create companies list page**
+- [x] **Step 1: Create companies list page**
 
 Create `src/app/[locale]/empresas/page.tsx`:
 ```typescript
@@ -402,7 +437,7 @@ function CompaniesContent() {
 }
 ```
 
-- [ ] **Step 2: Create company detail page**
+- [x] **Step 2: Create company detail page**
 
 Create `src/app/[locale]/empresas/[slug]/page.tsx`:
 ```typescript
@@ -438,7 +473,7 @@ function CompanyDetailContent({slug}: {slug: string}) {
 }
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/app/\[locale\]/empresas/
@@ -452,7 +487,7 @@ git commit -m "feat: create companies list and detail pages"
 **Files:**
 - Create: `src/app/[locale]/necesidades/page.tsx`
 
-- [ ] **Step 1: Create needs page**
+- [x] **Step 1: Create needs page**
 
 Create `src/app/[locale]/necesidades/page.tsx`:
 ```typescript
@@ -504,7 +539,7 @@ function NeedsContent() {
 }
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src/app/\[locale\]/necesidades/
@@ -518,7 +553,7 @@ git commit -m "feat: create needs page with lead form"
 **Files:**
 - Create: `src/components/LanguageSwitcher.tsx`
 
-- [ ] **Step 1: Create language switcher**
+- [x] **Step 1: Create language switcher**
 
 Create `src/components/LanguageSwitcher.tsx`:
 ```typescript
@@ -557,7 +592,7 @@ export default function LanguageSwitcher() {
 }
 ```
 
-- [ ] **Step 2: Add to layout**
+- [x] **Step 2: Add to layout**
 
 Update `src/app/[locale]/layout.tsx` to include:
 ```typescript
@@ -567,7 +602,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 <LanguageSwitcher />
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/components/LanguageSwitcher.tsx src/app/\[locale\]/layout.tsx
@@ -581,28 +616,28 @@ git commit -m "feat: add language switcher component"
 **Files:**
 - None (verification only)
 
-- [ ] **Step 1: Run dev server**
+- [x] **Step 1: Run dev server**
 
 ```bash
 npm run dev
 ```
 
-- [ ] **Step 2: Test default locale**
+- [x] **Step 2: Test default locale**
 
 Visit http://localhost:3000
 Expected: Redirects to /es, shows Spanish content
 
-- [ ] **Step 3: Test English locale**
+- [x] **Step 3: Test English locale**
 
 Visit http://localhost:3000/en
 Expected: Shows English content
 
-- [ ] **Step 4: Test language switching**
+- [x] **Step 4: Test language switching**
 
 Click language switcher buttons
 Expected: URL and content change between es/en
 
-- [ ] **Step 5: Test all routes**
+- [x] **Step 5: Test all routes**
 
 - `/es/empresas` → Spanish companies list
 - `/en/companies` → English companies list
@@ -611,7 +646,7 @@ Expected: URL and content change between es/en
 - `/es/necesidades` → Spanish needs form
 - `/en/needs` → English needs form
 
-- [ ] **Step 6: Run build**
+- [x] **Step 6: Run build**
 
 ```bash
 npm run build
@@ -619,7 +654,7 @@ npm run build
 
 Expected: Build succeeds without errors
 
-- [ ] **Step 7: Final commit**
+- [x] **Step 7: Final commit**
 
 ```bash
 git add .
