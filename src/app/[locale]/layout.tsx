@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation';
 import {Geist, Geist_Mono} from 'next/font/google';
 import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {getMessages, setRequestLocale} from 'next-intl/server';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import {routing} from '@/i18n/routing';
 import '../globals.css';
 
@@ -46,6 +47,7 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
+          <LanguageSwitcher />
           {children}
         </NextIntlClientProvider>
       </body>
