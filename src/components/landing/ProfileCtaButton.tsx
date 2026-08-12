@@ -1,13 +1,13 @@
-'use client';
-
 import type {ReactNode} from 'react';
-import Button from '@/components/ui/Button';
-import {siteConfig, type ProfileKey} from '@/config/site';
-import {useLeadForm} from './lead-form-context';
+import LinkButton from '@/components/ui/LinkButton';
+import type {ProfileKey} from '@/config/site';
 
 /**
- * CTA de una ruta de entrada: preselecciona el perfil y deja que el
- * ancla haga el scroll al formulario.
+ * CTA de una ruta de entrada.
+ *
+ * Lleva al levantamiento de necesidades con el perfil en la URL, de modo
+ * que el formulario abre con el select ya resuelto. Va en la URL y no en
+ * estado de React porque ahora es una navegación entre páginas.
  */
 type ProfileCtaButtonProps = {
   profile: ProfileKey;
@@ -20,15 +20,12 @@ export default function ProfileCtaButton({
   children,
   variant = 'outline'
 }: ProfileCtaButtonProps) {
-  const {setProfile} = useLeadForm();
-
   return (
-    <Button
-      href={`#${siteConfig.anchors.form}`}
+    <LinkButton
+      href={{pathname: '/necesidades', query: {perfil: profile}}}
       variant={variant}
-      onClick={() => setProfile(profile)}
     >
       {children}
-    </Button>
+    </LinkButton>
   );
 }

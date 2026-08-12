@@ -1,6 +1,7 @@
 import {useTranslations} from 'next-intl';
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
+import LinkButton from '@/components/ui/LinkButton';
 import Section from '@/components/ui/Section';
 import Text from '@/components/ui/Text';
 import {siteConfig} from '@/config/site';
@@ -34,9 +35,7 @@ export default function Hero() {
           </Text>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-7">
-            <Button href={`#${siteConfig.anchors.form}`}>
-              {t('ctaPrimary')}
-            </Button>
+            <LinkButton href="/necesidades">{t('ctaPrimary')}</LinkButton>
             <Button href={`#${siteConfig.anchors.model}`} variant="link">
               {t('ctaSecondary')}
             </Button>

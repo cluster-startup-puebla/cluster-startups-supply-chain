@@ -2,14 +2,14 @@
 
 import {useEffect, useState} from 'react';
 import {useTranslations} from 'next-intl';
-import Button from '@/components/ui/Button';
-import {siteConfig} from '@/config/site';
+import LinkButton from '@/components/ui/LinkButton';
 
 /**
  * Barra fija inferior en móvil.
  *
- * Aparece al salir del hero y se esconde cuando el formulario ya está a
- * la vista, para no tapar los campos justo cuando se están llenando.
+ * Aparece al salir del hero y lleva al levantamiento de necesidades, que
+ * vive en su propia página. Mientras el visitante recorre el argumento,
+ * la conversión queda siempre a un toque.
  *
  * Usa un listener de scroll en vez de IntersectionObserver: no necesita
  * nodo centinela y su condición es legible de un vistazo.
@@ -20,15 +20,7 @@ export default function StickyCta() {
 
   useEffect(() => {
     const update = () => {
-      const viewport = window.innerHeight;
-      const pastHero = window.scrollY > viewport * 0.6;
-
-      const form = document.getElementById(siteConfig.anchors.form);
-      const atForm = form
-        ? form.getBoundingClientRect().top < viewport * 0.6
-        : false;
-
-      setVisible(pastHero && !atForm);
+      setVisible(window.scrollY > window.innerHeight * 0.6);
     };
 
     update();
@@ -48,13 +40,9 @@ export default function StickyCta() {
       }`}
       aria-hidden={!visible}
     >
-      <Button
-        href={`#${siteConfig.anchors.form}`}
-        block
-        tabIndex={visible ? 0 : -1}
-      >
+      <LinkButton href="/necesidades" block>
         {t('label')}
-      </Button>
+      </LinkButton>
     </div>
   );
 }

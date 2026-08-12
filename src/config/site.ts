@@ -8,7 +8,7 @@
 type SiteConfig = {
   eventBannerEnabled: boolean;
   stickyCtaEnabled: boolean;
-  anchors: {model: string; form: string};
+  anchors: {model: string; content: string};
   contact: {email: string; phone: string};
   social: {linkedin: string; instagram: string; x: string};
   privacyUrl: string;
@@ -26,10 +26,13 @@ export const siteConfig: SiteConfig = {
    */
   stickyCtaEnabled: true,
 
-  /** Anclas de navegación interna. Una sola página, todo en scroll. */
+  /**
+   * Anclas dentro de la landing. El levantamiento de necesidades ya no
+   * es un ancla: vive en su propia página (`/necesidades`).
+   */
   anchors: {
     model: 'modelo',
-    form: 'contacto'
+    content: 'contenido'
   },
 
   /** Pendientes de confirmación — ver sección 9 del documento de contexto. */

@@ -200,5 +200,11 @@
   },
   "stickyCta": {
     "label": "Cuéntanos tu reto"
+  },
+  "closing": {
+    "title": "¿Tu reto es de los que no aparecen en un catálogo?",
+    "body": "Escríbelo. Es lo único que necesitamos para empezar a buscarte startups, talento e infraestructura.",
+    "cta": "Cuéntanos tu reto",
+    "ctaSecondary": "Ver empresas del clúster"
   }
 }

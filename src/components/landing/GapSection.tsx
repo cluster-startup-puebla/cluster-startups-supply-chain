@@ -1,12 +1,11 @@
 import {useTranslations} from 'next-intl';
-import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 import Icon, {type IconName} from '@/components/ui/Icon';
+import LinkButton from '@/components/ui/LinkButton';
 import Section from '@/components/ui/Section';
 import Text from '@/components/ui/Text';
-import {siteConfig} from '@/config/site';
 
 /**
  * Sección 3 — el hueco que llenamos.
@@ -47,7 +46,7 @@ export default function GapSection() {
           </div>
 
           <div>
-            <Button href={`#${siteConfig.anchors.form}`}>{t('cta')}</Button>
+            <LinkButton href="/necesidades">{t('cta')}</LinkButton>
           </div>
         </div>
       </Container>

@@ -12,6 +12,10 @@ export const routing = defineRouting({
     '/empresas/[slug]': {
       es: '/empresas/[slug]',
       en: '/companies/[slug]'
+    },
+    '/necesidades': {
+      es: '/necesidades',
+      en: '/needs'
     }
   }
 });

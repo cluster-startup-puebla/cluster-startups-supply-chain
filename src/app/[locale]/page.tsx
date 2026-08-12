@@ -1,16 +1,15 @@
 import {setRequestLocale} from 'next-intl/server';
+import ClosingCta from '@/components/landing/ClosingCta';
 import Credibility from '@/components/landing/Credibility';
 import EntryRoutes from '@/components/landing/EntryRoutes';
 import GapSection from '@/components/landing/GapSection';
 import Hero from '@/components/landing/Hero';
 import Infrastructure from '@/components/landing/Infrastructure';
-import LeadForm from '@/components/landing/LeadForm';
 import ModelFlow from '@/components/landing/ModelFlow';
 import PositioningStrip from '@/components/landing/PositioningStrip';
 import SiteFooter from '@/components/landing/SiteFooter';
 import SiteHeader from '@/components/landing/SiteHeader';
 import StickyCta from '@/components/landing/StickyCta';
-import {LeadFormProvider} from '@/components/landing/lead-form-context';
 import {siteConfig} from '@/config/site';
 import {routing} from '@/i18n/routing';
 
@@ -19,21 +18,22 @@ export function generateStaticParams() {
 }
 
 /**
- * Landing del clúster. Página única, todo en scroll, una sola conversión.
+ * Landing del clúster.
  *
- * Alternancia de fondo (regla dura del doc):
- * blanco → rosa → blanco → navy → blanco → blanco → navy → blanco → negro.
- * Ningún bloque navy queda pegado a otro navy.
+ * El levantamiento de necesidades vive en `/necesidades`: la landing
+ * argumenta y empuja allí, y cierra con `ClosingCta` para no morir en el
+ * footer. El ritmo alterna densidad de luz — un pasaje con cráter y
+ * nodos se gana uno callado.
  */
 export default async function HomePage({params}: PageProps<'/[locale]'>) {
   const {locale} = await params;
   setRequestLocale(locale);
 
   return (
-    <LeadFormProvider>
+    <>
       <SiteHeader />
 
-      <main className="flex-1">
+      <main id={siteConfig.anchors.content} className="flex-1">
         <Hero />
         {siteConfig.stickyCtaEnabled ? <StickyCta /> : null}
         <PositioningStrip />
@@ -42,10 +42,10 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
         <ModelFlow />
         <Credibility />
         <Infrastructure />
-        <LeadForm />
+        <ClosingCta />
       </main>
 
       <SiteFooter />
-    </LeadFormProvider>
+    </>
   );
 }

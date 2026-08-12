@@ -200,5 +200,11 @@
   },
   "stickyCta": {
     "label": "Tell us your challenge"
+  },
+  "closing": {
+    "title": "Is your challenge one a directory can't answer?",
+    "body": "Write it down. That's all we need to start finding you startups, talent and infrastructure.",
+    "cta": "Tell us your challenge",
+    "ctaSecondary": "See cluster companies"
   }
 }

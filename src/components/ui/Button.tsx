@@ -9,11 +9,42 @@ import type {ComponentPropsWithoutRef, ReactNode} from 'react';
  *
  * Altura mínima 48px y ancho completo en móvil (regla dura del doc).
  */
-type Variant = 'primary' | 'outline' | 'link';
+export type ButtonVariant = 'primary' | 'outline' | 'link';
+
+const base =
+  'inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 text-base font-bold tracking-tight ' +
+  'transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-rosa ' +
+  'disabled:cursor-not-allowed disabled:opacity-60';
+
+const variants: Record<ButtonVariant, string> = {
+  primary:
+    'bg-rosa text-white shadow-[0_8px_28px_-8px_var(--rosa)] hover:bg-lift hover:shadow-[0_12px_34px_-8px_var(--magenta-lift)]',
+  outline:
+    'border border-[var(--line-strong)] text-current hover:border-lift hover:bg-white/5',
+  link: 'min-h-12 px-0 text-current underline decoration-rosa decoration-2 underline-offset-[6px] hover:text-lift'
+};
+
+/**
+ * Clases del botón, expuestas aparte para que los enlaces de navegación
+ * de next-intl (`<Link>`, que necesita su propio componente para
+ * resolver las rutas traducidas) se vean idénticos a un `<Button>`.
+ */
+export function buttonClasses({
+  variant = 'primary',
+  block = false,
+  className = ''
+}: {
+  variant?: ButtonVariant;
+  block?: boolean;
+  className?: string;
+} = {}) {
+  const width = block ? 'w-full' : 'w-full sm:w-auto';
+  return `${base} ${variants[variant]} ${width} ${className}`;
+}
 
 type BaseProps = {
   children: ReactNode;
-  variant?: Variant;
+  variant?: ButtonVariant;
   block?: boolean;
   className?: string;
 };
@@ -26,19 +57,6 @@ type ButtonAsButton = BaseProps &
 
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
-const base =
-  'inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 text-base font-bold tracking-tight ' +
-  'transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-rosa ' +
-  'disabled:cursor-not-allowed disabled:opacity-60';
-
-const variants: Record<Variant, string> = {
-  primary:
-    'bg-rosa text-white shadow-[0_8px_28px_-8px_var(--rosa)] hover:bg-lift hover:shadow-[0_12px_34px_-8px_var(--magenta-lift)]',
-  outline:
-    'border border-[var(--line-strong)] text-current hover:border-lift hover:bg-white/5',
-  link: 'min-h-12 px-0 text-current underline decoration-rosa decoration-2 underline-offset-[6px] hover:text-lift'
-};
-
 export default function Button({
   children,
   variant = 'primary',
@@ -46,8 +64,7 @@ export default function Button({
   className = '',
   ...rest
 }: ButtonProps) {
-  const width = block ? 'w-full' : 'w-full sm:w-auto';
-  const classes = `${base} ${variants[variant]} ${width} ${className}`;
+  const classes = buttonClasses({variant, block, className});
 
   if ('href' in rest && rest.href !== undefined) {
     const {href, ...anchorProps} = rest as ButtonAsLink;
