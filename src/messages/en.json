@@ -25,5 +25,199 @@
       "message": "Message",
       "submit": "Submit"
     }
+  },
+
+  "meta": {
+    "title": "Innovation Cluster · Puebla",
+    "description": "The innovation layer of Puebla's technology ecosystem. We connect startups, talent, infrastructure and investment around the real challenges of industry."
+  },
+
+  "eventBanner": {
+    "event": "Mexico's Industry Supply Chain",
+    "stand": "Booth 777, Industrial Clusters Pavilion",
+    "when": "August 12–13, Centro Expositor Puebla"
+  },
+
+  "header": {
+    "skipToContent": "Skip to content",
+    "logoAlt": "Puebla Innovation Cluster"
+  },
+
+  "hero": {
+    "title": "The innovation layer of Puebla's technology ecosystem",
+    "subtitle": "We connect startups, talent, infrastructure and investment around the real challenges of industry.",
+    "ctaPrimary": "Tell us your challenge",
+    "ctaSecondary": "How it works"
+  },
+
+  "positioning": {
+    "text": "The other clusters in Puebla are industries. We are the layer that connects them with the technology, the talent and the startups that modernize them."
+  },
+
+  "gap": {
+    "title": "A supplier directory connects what already exists. We build what's missing.",
+    "supplier": {
+      "title": "If you're a supplier and you fail the audit",
+      "body": "You have the machine and the craft, but they ask you for traceability, documented quality control, response times or certifications you can't sustain today. It isn't a production problem: it's a systems problem. That can be built, and faster than you think."
+    },
+    "buyer": {
+      "title": "If you're a buyer and you can't find anyone",
+      "body": "The requirement has no domestic supplier, or the process you want to solve is internal and no directory covers it. That isn't a search: it's a build. With startups, technical talent and prototyping infrastructure."
+    },
+    "cta": "That's my case"
+  },
+
+  "routes": {
+    "title": "Four ways in",
+    "subtitle": "Find yours and leave us your details. We'll get in touch based on what you're looking for.",
+    "industry": {
+      "title": "Industry, suppliers and corporates",
+      "intro": "You have a digitalization, automation, quality or traceability challenge. We connect you with the startups and the talent that build it.",
+      "items": [
+        "Open Innovation: post your challenge and receive proposals from startups and teams in the ecosystem.",
+        "Trained technical talent, available for your projects.",
+        "Corporate Venture: invest in the solutions that solve your own challenges."
+      ],
+      "cta": "Post a challenge"
+    },
+    "startup": {
+      "title": "Startups and founders",
+      "intro": "Incubation, infrastructure and investment to build and scale your technology company.",
+      "items": [
+        "Innovation Hub at CERHAN II: coworking, FabLab and an AI lab with GPUs.",
+        "Matchmaking with your complementary partner and with first customers from industry.",
+        "Access to investment: the cluster fund, family offices, venture capital and open calls."
+      ],
+      "cta": "Join the ecosystem"
+    },
+    "investor": {
+      "title": "Investors",
+      "intro": "Curated dealflow of Puebla startups supported from incubation onward.",
+      "items": [
+        "Startups filtered and validated by the ecosystem.",
+        "Co-investment with the cluster fund and other vehicles.",
+        "Pitch Days and direct access to founders."
+      ],
+      "cta": "I want to invest"
+    },
+    "academia": {
+      "title": "Universities and research centers",
+      "intro": "We connect your talent and research with real demand from industry.",
+      "items": [
+        "Community service, internships and a job board wired into the ecosystem.",
+        "Technology transfer to take your research to market.",
+        "A Nodes model to extend the ecosystem to your institution."
+      ],
+      "cta": "Explore an agreement"
+    }
+  },
+
+  "model": {
+    "title": "How the model works",
+    "body": "Industry brings a real problem. The ecosystem supplies the talent and the startups that solve it. The solution gets built, validated and scaled with access to investment. The result goes back to industry and modernizes it.",
+    "steps": {
+      "challenge": "Industry challenge",
+      "talent": "Talent + startups",
+      "solution": "Technology solution",
+      "scale": "Scale-up and investment"
+    }
+  },
+
+  "credibility": {
+    "title": "Why the cluster",
+    "items": {
+      "infrastructure": {
+        "title": "Real infrastructure",
+        "body": "The Innovation Hub operates in CERHAN II (Sanctorum), the same complex that hosts Google's and NVIDIA's AI labs."
+      },
+      "model": {
+        "title": "A 7-level ecosystem model",
+        "body": "From local industry to strategic direction, with triple-helix governance."
+      },
+      "institutional": {
+        "title": "Institutional backing",
+        "body": "We work with SECIHTI, SEDETRA, CERHAN and the state's business chambers."
+      },
+      "recognition": {
+        "title": "Strategic cluster of Puebla",
+        "body": "Recognized within the Industrial Clusters Pavilion."
+      }
+    }
+  },
+
+  "infrastructure": {
+    "title": "Infrastructure",
+    "subtitle": "You have somewhere to build.",
+    "items": {
+      "hub": {
+        "title": "Innovation Hub (CERHAN II)",
+        "body": "Coworking, meeting rooms and workspaces."
+      },
+      "fablab": {
+        "title": "FabLab",
+        "body": "Digital fabrication, 3D printing and prototyping."
+      },
+      "ai": {
+        "title": "AI lab with GPUs",
+        "body": "Compute for model development and training."
+      },
+      "labs": {
+        "title": "Specialized laboratories",
+        "body": "Textiles and biomaterials, water treatment, physicochemical analysis, among others."
+      },
+      "nodes": {
+        "title": "Nodes",
+        "body": "Extensions of the ecosystem across the state."
+      }
+    }
+  },
+
+  "form": {
+    "title": "Connect with the ecosystem",
+    "subtitle": "Leave us your details and we'll get in touch based on what you're looking for.",
+    "optional": "Optional",
+    "fields": {
+      "name": "Full name",
+      "company": "Company / organization",
+      "role": "Role / title",
+      "profile": "Profile",
+      "challenge": "What's your challenge or interest?",
+      "email": "Email",
+      "phone": "WhatsApp / phone",
+      "consent": "I agree to be contacted (privacy notice)"
+    },
+    "profilePlaceholder": "Select an option",
+    "profiles": {
+      "industry": "Industry / Supplier",
+      "startup": "Startup / Founder",
+      "investor": "Investor",
+      "academia": "University / Academia",
+      "other": "Other"
+    },
+    "challengePlaceholder": "E.g.: we can't document traceability well enough to qualify with a customer.",
+    "submit": "Send",
+    "submitting": "Sending…",
+    "success": "Thank you, we'll be in touch soon.",
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address.",
+      "consent": "We need your permission to contact you.",
+      "generic": "Couldn't send. Please try again."
+    }
+  },
+
+  "footer": {
+    "contactLabel": "Contact",
+    "contactName": "Álvaro Castillo — Cluster Manager",
+    "locationLabel": "Location",
+    "location": "Innovation Hub, CERHAN II — Av. Roble 16, Zona VW, Sanctorum, Puebla.",
+    "socialLabel": "Social",
+    "privacy": "Privacy notice",
+    "eventNote": "During the event you'll find us at Booth 777, Industrial Clusters Pavilion.",
+    "pending": "To be confirmed"
+  },
+
+  "stickyCta": {
+    "label": "Tell us your challenge"
   }
 }

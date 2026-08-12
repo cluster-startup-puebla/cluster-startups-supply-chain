@@ -5,9 +5,20 @@ import {useLocale} from 'next-intl';
 import {usePathname, useRouter} from '@/i18n/navigation';
 import {routing, type Locale} from '@/i18n/routing';
 
-const localeLabels: Record<Locale, string> = {
+/**
+ * Conmutador de idioma para la barra de marca.
+ *
+ * Muestra el código corto para no robarle ancho al logo en móvil; el
+ * nombre completo va en `aria-label` para lectores de pantalla.
+ */
+const localeNames: Record<Locale, string> = {
   es: 'Español',
   en: 'English'
+};
+
+const localeCodes: Record<Locale, string> = {
+  es: 'ES',
+  en: 'EN'
 };
 
 export default function LanguageSwitcher() {
@@ -17,27 +28,38 @@ export default function LanguageSwitcher() {
   const params = useParams();
 
   function switchLocale(nextLocale: Locale) {
-    // Keep the current route (including its params) and swap only the locale,
-    // so localized pathnames resolve to their counterpart.
+    // Conserva la ruta actual y sus params, y cambia sólo el locale, para
+    // que las rutas traducidas resuelvan a su equivalente.
     router.replace(
-      // @ts-expect-error -- `params` is not narrowed to the current pathname
+      // @ts-expect-error -- `params` no está acotado al pathname actual
       {pathname, params},
       {locale: nextLocale}
     );
   }
 
   return (
-    <div className="flex gap-3 p-4">
-      {routing.locales.map((loc) => (
-        <button
-          key={loc}
-          type="button"
-          onClick={() => switchLocale(loc)}
-          className={locale === loc ? 'font-bold underline' : 'underline'}
-        >
-          {localeLabels[loc]}
-        </button>
-      ))}
+    <div className="flex items-center gap-1">
+      {routing.locales.map((loc) => {
+        const isActive = locale === loc;
+
+        return (
+          <button
+            key={loc}
+            type="button"
+            lang={loc}
+            aria-label={localeNames[loc]}
+            aria-current={isActive ? 'true' : undefined}
+            onClick={() => switchLocale(loc)}
+            className={`min-h-11 min-w-11 rounded-lg px-2 text-sm transition-colors ${
+              isActive
+                ? 'font-bold text-navy underline underline-offset-4'
+                : 'font-normal text-muted hover:text-navy'
+            }`}
+          >
+            {localeCodes[loc]}
+          </button>
+        );
+      })}
     </div>
   );
 }

@@ -2,8 +2,11 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {Geist, Geist_Mono} from 'next/font/google';
 import {hasLocale, NextIntlClientProvider} from 'next-intl';
-import {getMessages, setRequestLocale} from 'next-intl/server';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale
+} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import '../globals.css';
 
@@ -17,13 +20,22 @@ const geistMono = Geist_Mono({
   subsets: ['latin']
 });
 
-export const metadata: Metadata = {
-  title: 'Capim Mexico Supply Chain',
-  description: 'Supply chain platform'
-};
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'meta'});
+
+  return {
+    title: t('title'),
+    description: t('description')
+  };
 }
 
 export default async function LocaleLayout({
@@ -45,9 +57,8 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <NextIntlClientProvider messages={messages}>
-          <LanguageSwitcher />
           {children}
         </NextIntlClientProvider>
       </body>
