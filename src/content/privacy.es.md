@@ -6,9 +6,9 @@ Este aviso se emite conforme a la Ley Federal de Protección de Datos Personales
 
 ## 1. Identidad y domicilio del responsable
 
-**PENDIENTE — RAZÓN SOCIAL DEL CLÚSTER** (en adelante, "el Clúster"), con domicilio en Av. Roble 16, Zona VW, Sanctorum, Puebla, México, es responsable del tratamiento de los datos personales que nos proporcionas y de su protección.
+**Cluster de Startups e Innovación A.C.** (en adelante, "el Clúster"), con domicilio en Av. Roble 16, Zona VW, Sanctorum, Puebla, México, es responsable del tratamiento de los datos personales que nos proporcionas y de su protección.
 
-Para cualquier asunto relacionado con este aviso puedes escribirnos a **PENDIENTE — CORREO DEL RESPONSABLE**.
+Para cualquier asunto relacionado con este aviso puedes escribirnos a **hola@alvarocastillo.dev**.
 
 ## 2. Datos personales que tratamos
 
@@ -45,7 +45,7 @@ Estas finalidades no son necesarias para atenderte, y puedes negarte a ellas sin
 - Invitarte a participar en encuentros de vinculación con la industria, startups o instituciones académicas.
 - Elaborar estadísticas agregadas y anónimas sobre los retos que recibimos.
 
-Si no quieres que tratemos tus datos para estas finalidades adicionales, escríbenos a **PENDIENTE — CORREO DEL RESPONSABLE** con el asunto "Finalidades adicionales" en cualquier momento, incluso al momento de enviar el formulario. Negarte no es motivo para que dejemos de atender tu solicitud.
+Si no quieres que tratemos tus datos para estas finalidades adicionales, escríbenos a **hola@alvarocastillo.dev** con el asunto "Finalidades adicionales" en cualquier momento, incluso al momento de enviar el formulario. Negarte no es motivo para que dejemos de atender tu solicitud.
 
 ## 4. Medios para limitar el uso o divulgación de tus datos
 
@@ -57,7 +57,7 @@ Tienes derecho a conocer qué datos personales tenemos de ti, para qué los usam
 
 ### Cómo ejercerlos
 
-Envía tu solicitud a **PENDIENTE — CORREO DEL RESPONSABLE**. Para poder atenderla, incluye:
+Envía tu solicitud a **hola@alvarocastillo.dev**. Para poder atenderla, incluye:
 
 1. Tu nombre y el medio por el que quieres recibir la respuesta.
 2. Los documentos que acrediten tu identidad o, en su caso, la representación legal de quien presenta la solicitud.

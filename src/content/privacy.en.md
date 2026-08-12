@@ -8,9 +8,9 @@ This is a courtesy translation. In case of any discrepancy, the Spanish version 
 
 ## 1. Identity and address of the data controller
 
-**PENDING — CLUSTER'S LEGAL NAME** (the "Cluster"), with address at Av. Roble 16, Zona VW, Sanctorum, Puebla, Mexico, is responsible for the processing and protection of the personal data you provide.
+**Cluster de Startups e Innovación A.C.** (the "Cluster"), with address at Av. Roble 16, Zona VW, Sanctorum, Puebla, Mexico, is responsible for the processing and protection of the personal data you provide.
 
-For any matter related to this notice, write to us at **PENDING — CONTROLLER'S EMAIL**.
+For any matter related to this notice, write to us at **hola@alvarocastillo.dev**.
 
 ## 2. Personal data we process
 
@@ -47,7 +47,7 @@ These purposes are not necessary to assist you, and you may refuse them without 
 - Inviting you to matchmaking sessions with industry, startups or academic institutions.
 - Producing aggregated, anonymous statistics about the challenges we receive.
 
-If you do not want your data processed for these additional purposes, write to **PENDING — CONTROLLER'S EMAIL** with the subject "Additional purposes" at any time, including when you submit the form. Refusing is not a reason for us to stop handling your request.
+If you do not want your data processed for these additional purposes, write to **hola@alvarocastillo.dev** with the subject "Additional purposes" at any time, including when you submit the form. Refusing is not a reason for us to stop handling your request.
 
 ## 4. Means to limit the use or disclosure of your data
 
@@ -59,7 +59,7 @@ You have the right to know what personal data we hold about you, what we use it 
 
 ### How to exercise them
 
-Send your request to **PENDING — CONTROLLER'S EMAIL**. So that we can act on it, please include:
+Send your request to **hola@alvarocastillo.dev**. So that we can act on it, please include:
 
 1. Your name and the channel through which you want to receive our reply.
 2. Documents proving your identity or, where applicable, the legal representation of whoever files the request.
