@@ -148,6 +148,7 @@ export const companies: readonly Company[] = [
     contact: {
       person: 'Daniel Martínez',
       role: 'CEO',
+      website: 'https://andon.milevadynamics.com/tablero',
       email: 'Josedaniel.martinez@milevadynamics.com',
       phone: '222 954 3666'
     }
