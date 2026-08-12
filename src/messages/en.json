@@ -69,7 +69,7 @@
       "title": "Startups and founders",
       "intro": "Incubation, infrastructure and investment to build and scale your technology company.",
       "items": [
-        "Innovation Hub at CERHAN II: coworking, FabLab and an AI lab with GPUs.",
+        "Innovation Hub: coworking, FabLab and an AI lab with GPUs.",
         "Matchmaking with your complementary partner and with first customers from industry.",
         "Access to investment: the cluster fund, family offices, venture capital and open calls."
       ],
@@ -111,7 +111,7 @@
     "items": {
       "infrastructure": {
         "title": "Real infrastructure",
-        "body": "The Innovation Hub operates in CERHAN II (Sanctorum), the same complex that hosts Google's and NVIDIA's AI labs."
+        "body": "The Innovation Hub operates in Sanctorum, the same complex that hosts Google's and NVIDIA's AI labs."
       },
       "model": {
         "title": "A 7-level ecosystem model",
@@ -119,7 +119,7 @@
       },
       "institutional": {
         "title": "Institutional backing",
-        "body": "We work with SECIHTI, SEDETRA, CERHAN and the state's business chambers."
+        "body": "We work with SECIHTI, SEDETRA and the state's business chambers."
       },
       "recognition": {
         "title": "Strategic cluster of Puebla",
@@ -132,7 +132,7 @@
     "subtitle": "You have somewhere to build.",
     "items": {
       "hub": {
-        "title": "Innovation Hub (CERHAN II)",
+        "title": "Innovation Hub",
         "body": "Coworking, meeting rooms and workspaces."
       },
       "fablab": {
@@ -192,7 +192,7 @@
     "contactLabel": "Contact",
     "contactName": "Álvaro Castillo — Cluster Manager",
     "locationLabel": "Location",
-    "location": "Innovation Hub, CERHAN II — Av. Roble 16, Zona VW, Sanctorum, Puebla.",
+    "location": "Innovation Hub — Av. Roble 16, Zona VW, Sanctorum, Puebla.",
     "socialLabel": "Social",
     "privacy": "Privacy notice",
     "eventNote": "During the event you'll find us at Booth 777, Industrial Clusters Pavilion.",

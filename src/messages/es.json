@@ -69,7 +69,7 @@
       "title": "Startups y emprendedores",
       "intro": "Incubación, infraestructura e inversión para construir y escalar tu empresa tecnológica.",
       "items": [
-        "Hub de Innovación en CERHAN II: coworking, FabLab y laboratorio de IA con GPUs.",
+        "Hub de Innovación: coworking, FabLab y laboratorio de IA con GPUs.",
         "Vinculación con tu socio complementario y con primeros clientes de la industria.",
         "Acceso a inversión: fondo del clúster, family offices, venture capital y convocatorias."
       ],
@@ -111,7 +111,7 @@
     "items": {
       "infrastructure": {
         "title": "Infraestructura real",
-        "body": "El Hub de Innovación opera en CERHAN II (Sanctorum), el mismo complejo que alberga los laboratorios de IA de Google y NVIDIA."
+        "body": "El Hub de Innovación opera en Sanctorum, el mismo complejo que alberga los laboratorios de IA de Google y NVIDIA."
       },
       "model": {
         "title": "Modelo de ecosistema de 7 niveles",
@@ -119,7 +119,7 @@
       },
       "institutional": {
         "title": "Respaldo institucional",
-        "body": "Trabajamos con SECIHTI, SEDETRA, CERHAN y las cámaras empresariales del estado."
+        "body": "Trabajamos con SECIHTI, SEDETRA y las cámaras empresariales del estado."
       },
       "recognition": {
         "title": "Clúster estratégico de Puebla",
@@ -132,7 +132,7 @@
     "subtitle": "Tienes dónde construir.",
     "items": {
       "hub": {
-        "title": "Hub de Innovación (CERHAN II)",
+        "title": "Hub de Innovación",
         "body": "Coworking, salas y espacios de trabajo."
       },
       "fablab": {
@@ -192,7 +192,7 @@
     "contactLabel": "Contacto",
     "contactName": "Álvaro Castillo — Cluster Manager",
     "locationLabel": "Ubicación",
-    "location": "Hub de Innovación, CERHAN II — Av. Roble 16, Zona VW, Sanctorum, Puebla.",
+    "location": "Hub de Innovación — Av. Roble 16, Zona VW, Sanctorum, Puebla.",
     "socialLabel": "Redes",
     "privacy": "Aviso de privacidad",
     "eventNote": "Durante el evento nos encuentras en el Stand 777, Pabellón Clústers Industriales.",

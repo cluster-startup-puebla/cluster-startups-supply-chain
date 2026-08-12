@@ -1,10 +1,11 @@
-import {useTranslations} from 'next-intl';
+import {useLocale, useTranslations} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import type {Metadata} from 'next';
 import Card from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 import Icon from '@/components/ui/Icon';
+import Pill from '@/components/ui/Pill';
 import Section from '@/components/ui/Section';
 import Text from '@/components/ui/Text';
 import CompanyLogo from '@/components/landing/CompanyLogo';
@@ -12,7 +13,7 @@ import SiteFooter from '@/components/landing/SiteFooter';
 import SiteHeader from '@/components/landing/SiteHeader';
 import {Link} from '@/i18n/navigation';
 import {routing} from '@/i18n/routing';
-import {companies} from '@/data/companies';
+import {companies, localize} from '@/data/companies';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -55,6 +56,7 @@ export default async function CompaniesPage({
 
 function CompaniesContent() {
   const t = useTranslations('companies');
+  const locale = useLocale();
 
   return (
     <Section tone="crater" nodes="sparse" spacing="roomy">
@@ -79,9 +81,19 @@ function CompaniesContent() {
                     {company.name}
                   </Heading>
 
-                  <Text size="sm" className="mt-2" dim full>
-                    {company.industry ?? t('pending')}
-                  </Text>
+                  <ul
+                    aria-label={t('detail.industry')}
+                    className="mt-3 flex flex-wrap gap-1.5"
+                  >
+                    {(company.industries
+                      ? localize(company.industries, locale)
+                      : [t('pending')]
+                    ).map((industry) => (
+                      <li key={industry}>
+                        <Pill className="px-3 py-1 text-xs">{industry}</Pill>
+                      </li>
+                    ))}
+                  </ul>
 
                   <Link
                     href={{

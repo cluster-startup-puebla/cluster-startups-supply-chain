@@ -1,11 +1,12 @@
 import {notFound} from 'next/navigation';
 import type {Metadata} from 'next';
-import {useTranslations} from 'next-intl';
+import {useLocale, useTranslations} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import Card from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 import Icon from '@/components/ui/Icon';
+import Pill from '@/components/ui/Pill';
 import Section from '@/components/ui/Section';
 import Text from '@/components/ui/Text';
 import CompanyLogo from '@/components/landing/CompanyLogo';
@@ -13,7 +14,7 @@ import SiteFooter from '@/components/landing/SiteFooter';
 import SiteHeader from '@/components/landing/SiteHeader';
 import {Link} from '@/i18n/navigation';
 import {routing} from '@/i18n/routing';
-import {companies, getCompany, type Company} from '@/data/companies';
+import {companies, getCompany, localize, type Company} from '@/data/companies';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -35,14 +36,19 @@ export async function generateMetadata({
 
   return {
     title: company.name,
-    description: company.solution ?? t('pendingNote')
+    description: company.solution
+      ? localize(company.solution, locale)
+      : t('pendingNote')
   };
 }
 
 /**
  * Ficha de empresa.
  *
- * Tres bloques —industria, problema, solución— más la ficha de contacto.
+ * Las industrias van como píldoras pegadas al titular —son etiquetas,
+ * se escanean— y debajo los dos párrafos largos, problema y solución, a
+ * media página cada uno. El contacto cierra a todo lo ancho.
+ *
  * Los campos que la empresa aún no ha confirmado se muestran como
  * pendientes: son afirmaciones sobre un negocio real y no se rellenan
  * con texto de relleno.
@@ -72,9 +78,13 @@ export default async function CompanyDetailPage({
 
 function CompanyDetail({company}: {company: Company}) {
   const t = useTranslations('companies');
+  const locale = useLocale();
+
+  const industries = company.industries
+    ? localize(company.industries, locale)
+    : null;
 
   const blocks = [
-    {key: 'industry', value: company.industry},
     {key: 'problem', value: company.problem},
     {key: 'solution', value: company.solution}
   ] as const;
@@ -94,7 +104,7 @@ function CompanyDetail({company}: {company: Company}) {
   ] as const;
 
   const hasContact = contactEntries.some((entry) => entry.value);
-  const isPending = !company.industry && !company.problem && !company.solution;
+  const isPending = !industries && !company.problem && !company.solution;
 
   return (
     <Section tone="crater" nodes="sparse" spacing="roomy">
@@ -108,11 +118,30 @@ function CompanyDetail({company}: {company: Company}) {
             {t('backToList')}
           </Link>
 
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7">
-            <CompanyLogo company={company} className="size-20" />
-            <Heading as="h1" size="hero">
-              {company.name}
-            </Heading>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7">
+              <CompanyLogo company={company} className="size-20" />
+              <Heading as="h1" size="hero">
+                {company.name}
+              </Heading>
+            </div>
+
+            {/* Las industrias van pegadas al titular, como etiquetas de la
+                empresa. Cuando falta el dato se marca pendiente, salvo si
+                la ficha entera lo está: ahí el aviso de abajo ya lo dice y
+                repetirlo tres veces es ruido. */}
+            <ul
+              aria-label={t('detail.industry')}
+              className="flex flex-wrap gap-2"
+            >
+              {(industries ?? (isPending ? [] : [t('pending')])).map(
+                (industry) => (
+                  <li key={industry}>
+                    <Pill>{industry}</Pill>
+                  </li>
+                )
+              )}
+            </ul>
           </div>
 
           {isPending ? (
@@ -121,7 +150,10 @@ function CompanyDetail({company}: {company: Company}) {
             </p>
           ) : null}
 
-          <dl className="grid gap-4 sm:gap-6 md:grid-cols-3">
+          {/* Dos columnas, no tres: problema y solución son párrafos
+              largos y a un tercio de ancho caen en columnas de seis
+              palabras que nadie lee. */}
+          <dl className="grid gap-4 sm:gap-6 md:grid-cols-2">
             {blocks.map(({key, value}) => (
               <Card key={key}>
                 <dt className="text-xs font-bold uppercase tracking-[0.14em] text-dim">
@@ -129,7 +161,7 @@ function CompanyDetail({company}: {company: Company}) {
                 </dt>
                 <dd className="mt-3">
                   {value ? (
-                    <Text full>{value}</Text>
+                    <Text full>{localize(value, locale)}</Text>
                   ) : (
                     <Text className="text-dim/60" full>
                       {t('pending')}
@@ -140,13 +172,16 @@ function CompanyDetail({company}: {company: Company}) {
             ))}
           </dl>
 
-          <Card lit className="sm:max-w-lg">
+          <Card lit>
             <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-dim">
               {t('detail.contact')}
             </h2>
 
             {hasContact ? (
-              <dl className="mt-4 flex flex-col gap-3">
+              // A todo lo ancho la lista se tumba en fila: apilada dejaría
+              // una tarjeta larguísima con tres renglones y medio metro de
+              // vacío a la derecha.
+              <dl className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-14 sm:gap-y-4">
                 {contactEntries.map(({key, value, href}) =>
                   value ? (
                     <div key={key} className="flex flex-col gap-0.5">
