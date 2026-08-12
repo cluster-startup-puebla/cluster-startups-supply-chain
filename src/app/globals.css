@@ -54,7 +54,7 @@ body {
 /* La barra de marca es fija: compensa el salto al navegar por anclas. */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 7.5rem;
+  scroll-padding-top: 6.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

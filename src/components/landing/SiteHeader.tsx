@@ -34,7 +34,7 @@ export default function SiteHeader() {
 
       <header className="sticky top-0 z-50 border-b border-line bg-ink/80 backdrop-blur-md">
         <Container width="wide">
-          <div className="flex min-h-24 items-center justify-between gap-3">
+          <div className="flex min-h-20 items-center justify-between gap-3">
             <Link href="/" aria-label={t('logoAlt')}>
               <Logo />
             </Link>

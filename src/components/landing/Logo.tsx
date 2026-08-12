@@ -22,7 +22,7 @@ export default function Logo({className = ''}: {className?: string}) {
       width={972}
       height={400}
       priority
-      className={`[filter:brightness(0)_invert(1)] ${className || 'h-16 w-auto sm:h-[4.5rem]'}`}
+      className={`[filter:brightness(0)_invert(1)] ${className || 'h-14 w-auto sm:h-16'}`}
     />
   );
 }
