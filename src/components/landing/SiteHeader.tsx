@@ -67,8 +67,12 @@ export default function SiteHeader() {
               titulares y se leía pegado al borde. */}
           <Container>
             <div
+              // Desplegada en escritorio la barra sube a 96px: el logo mide
+              // 64px de alto y en 80px le quedaban 8px por lado, con el
+              // remate de "e INNOVACION" rozando el filo inferior. El alto
+              // de móvil no se toca, que ahí el viewport se paga caro.
               className={`flex items-center justify-between gap-3 px-1 transition-[min-height] duration-300 ease-out motion-reduce:transition-none sm:px-2 ${
-                condensed ? 'min-h-16' : 'min-h-20'
+                condensed ? 'min-h-16' : 'min-h-20 sm:min-h-24'
               }`}
             >
               <Link href="/" aria-label={t('logoAlt')}>
