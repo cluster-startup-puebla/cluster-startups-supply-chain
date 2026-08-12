@@ -37,7 +37,7 @@ export const siteConfig: SiteConfig = {
 
   /** El nombre y el cargo viven en `messages.footer.contactName`. */
   contact: {
-    email: 'rancholoko69@gmail.com',
+    email: 'raymundoanzures98@gmail.com',
     phone: '+52 (275) 112-1666'
   },
 

@@ -35,6 +35,12 @@ export type LocalizedText = Record<Locale, string>;
  */
 export type LocalizedList = Record<Locale, readonly string[]>;
 
+export type CatalogItem = {
+  name: LocalizedText;
+  description?: LocalizedText;
+  image?: string;
+};
+
 export type Company = {
   /** Segmento de URL. En inglés la ruta es /companies/<slug>. */
   slug: string;
@@ -52,6 +58,8 @@ export type Company = {
   problem?: LocalizedText;
   /** Solución o servicio que provee. */
   solution?: LocalizedText;
+  /** Productos o servicios concretos que ofrece la empresa. */
+  catalog?: readonly CatalogItem[];
   contact?: {
     /** Persona con la que se habla, no un buzón genérico. */
     person?: string;
@@ -118,6 +126,52 @@ export const companies: readonly Company[] = [
       es: 'Un ecosistema que cuida el cuerpo del operador y sostiene el expediente. Equipos de manipulación de carga en gravedad cero y exoesqueletos que quitan el esfuerzo de la tarea sin rediseñar la línea, más ErgoSoft para levantar la evaluación ergonómica, documentar los controles y llevar el seguimiento que pide la norma.',
       en: 'An ecosystem that protects the operator’s body and keeps the records straight. Zero-gravity load handling equipment and exoskeletons take the strain out of the task without redesigning the line, plus ErgoSoft to run the ergonomic assessment, document controls and keep the follow-up the standard requires.'
     },
+    catalog: [
+      {
+        name: {
+          es: 'Dronebox',
+          en: 'Dronebox'
+        },
+        description: {
+          es: 'Asistente robótico de transporte de carga que identifica escalones, escaleras rectas y caracol para asistir en el traslado. Capacidad de hasta 500 kg.',
+          en: 'Robotic load transport assistant that identifies steps, straight and spiral staircases to assist in load carrying. Capacity up to 500 kg.'
+        },
+        image: '/empresas/kotemah/dronebox.webp'
+      },
+      {
+        name: {
+          es: 'LEXA WS UBF',
+          en: 'LEXA WS UBF'
+        },
+        description: {
+          es: 'Esqueleto artificial portátil que asiste al operador en tareas repetitivas de carga. Asistencia de 1.5 a 16 kg.',
+          en: 'Wearable artificial skeleton that assists the operator in repetitive load-bearing tasks. Load assistance of 1.5 to 16 kg.'
+        },
+        image: '/empresas/kotemah/lexa-ws-ubf.webp'
+      },
+      {
+        name: {
+          es: 'COBHAN',
+          en: 'COBHAN'
+        },
+        description: {
+          es: 'Equipo neumático o eléctrico que asiste en la carga de materiales pesados, eliminando el riesgo de lesiones lumbares. Capacidad de 20 a 250 kg.',
+          en: 'Pneumatic or electric equipment that assists in loading heavy materials, eliminating the risk of lower back injuries. Capacity from 20 to 250 kg.'
+        },
+        image: '/empresas/kotemah/cobhan.webp'
+      },
+      {
+        name: {
+          es: 'CORI',
+          en: 'CORI'
+        },
+        description: {
+          es: 'Equipo de asistencia de carga para tareas de transferencia en líneas de producción. Capacidad de 20 a 50 kg.',
+          en: 'Load assistance equipment for transfer tasks on production lines. Capacity from 20 to 50 kg.'
+        },
+        image: '/empresas/kotemah/cori.webp'
+      }
+    ],
     contact: {
       person: 'Rodrigo Ruiz',
       email: 'ventas.koteos@gmail.com',
@@ -245,6 +299,48 @@ export const companies: readonly Company[] = [
       es: 'Hace que los sistemas se hablen entre sí e implementa soluciones de IA que estandarizan, ordenan y miden el proceso antes de automatizarlo. El compromiso es concreto: cualquier Excel que hoy sostenga la operación se convierte en plataforma en ocho semanas, con el dato en un solo lugar y el proceso medido de punta a punta.',
       en: 'Gets systems talking to each other and deploys AI that standardizes, orders and measures a process before automating it. The commitment is concrete: any spreadsheet currently holding the operation together becomes a platform in eight weeks, with the data in one place and the process measured end to end.'
     },
+    catalog: [
+      {
+        name: {
+          es: 'Estrategia de transformación digital',
+          en: 'Digital transformation strategy'
+        },
+        description: {
+          es: 'Definimos la hoja de ruta tecnológica de tu empresa: qué automatizar primero, con qué datos trabajar y cómo escalar sin romper lo que ya funciona.',
+          en: 'We define your company\'s technology roadmap: what to automate first, what data to work with, and how to scale without breaking what already works.'
+        }
+      },
+      {
+        name: {
+          es: 'Integración de sistemas',
+          en: 'Systems integration'
+        },
+        description: {
+          es: 'Conectamos tus sistemas existentes (ERP, CRM, hojas de cálculo, bases de datos) en una sola plataforma con datos unificados y procesos medidos.',
+          en: 'We connect your existing systems (ERP, CRM, spreadsheets, databases) into a single platform with unified data and measured processes.'
+        }
+      },
+      {
+        name: {
+          es: 'Automatización con IA',
+          en: 'AI-powered automation'
+        },
+        description: {
+          es: 'Implementamos soluciones de IA que estandarizan y ordenan el proceso antes de automatizarlo, con compromiso de resultado concreto.',
+          en: 'We deploy AI solutions that standardize and order the process before automating it, with a concrete commitment to results.'
+        }
+      },
+      {
+        name: {
+          es: 'Sistemas agenticos y capa de datos',
+          en: 'Agentic systems and data layer'
+        },
+        description: {
+          es: 'Construimos agentes de IA que operan sobre tus datos reales: asistentes que consultan, procesan y toman decisiones dentro de tus sistemas, no fuera de ellos.',
+          en: 'We build AI agents that operate on your real data: assistants that query, process and make decisions within your systems, not outside them.'
+        }
+      }
+    ],
     contact: {
       person: 'Álvaro Castillo',
       email: 'hola@alvarocastillo.dev',

@@ -1,4 +1,5 @@
 import {notFound} from 'next/navigation';
+import Image from 'next/image';
 import type {Metadata} from 'next';
 import {useLocale, useTranslations} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
@@ -190,6 +191,44 @@ function CompanyDetail({company}: {company: Company}) {
               </Card>
             ))}
           </dl>
+
+          {company.catalog && company.catalog.length > 0 ? (
+            <Card>
+              <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-dim">
+                {t('detail.catalog')}
+              </h2>
+              <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+                {company.catalog.map((item) => (
+                  <div
+                    key={localize(item.name, locale)}
+                    className="flex flex-col gap-3 rounded-xl border border-line bg-white/[0.02] p-4"
+                  >
+                    {item.image ? (
+                      <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-white/[0.05]">
+                        <Image
+                          src={item.image}
+                          alt={localize(item.name, locale)}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      </div>
+                    ) : null}
+                    <div className="flex flex-col gap-1">
+                      <dt className="text-base font-bold">
+                        {localize(item.name, locale)}
+                      </dt>
+                      {item.description ? (
+                        <dd className="text-sm text-dim">
+                          {localize(item.description, locale)}
+                        </dd>
+                      ) : null}
+                    </div>
+                  </div>
+                ))}
+              </dl>
+            </Card>
+          ) : null}
 
           <Card lit>
             <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-dim">
