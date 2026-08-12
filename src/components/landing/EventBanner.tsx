@@ -22,8 +22,8 @@ export default function EventBanner() {
 
   return (
     <div className="border-b border-line bg-deep">
-      <Container width="wide" className="py-3">
-        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+      <Container className="py-5">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
           <Image
             src="/logo-evento.webp"
             alt={t('logoAlt')}

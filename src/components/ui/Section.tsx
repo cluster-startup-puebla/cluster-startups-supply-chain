@@ -48,7 +48,11 @@ export default function Section({
       className={`relative isolate overflow-hidden text-text ${tones[tone]} ${spacings[spacing]} ${className}`}
     >
       {nodes ? <NodeField variant={nodes} /> : null}
-      <div className="relative">{children}</div>
+      {/* `w-full` es obligatorio: cuando la sección se usa con `flex`
+          (el hero, para centrar en vertical) este envoltorio pasa a ser
+          ítem flex y se dimensionaría por contenido, dejando el
+          `mx-auto` del Container sin efecto y el bloque pegado al borde. */}
+      <div className="relative w-full">{children}</div>
     </section>
   );
 }
