@@ -89,17 +89,33 @@ function CompanyDetail({company}: {company: Company}) {
     {key: 'solution', value: company.solution}
   ] as const;
 
+  // `external` en vez de comparar contra la clave al pintar: al añadir el
+  // demo, un `key === 'website'` habría dejado el segundo enlace abriendo
+  // en la misma pestaña y sin `rel`, sin que nada lo delatara.
   const contactEntries = [
-    {key: 'website', value: company.contact?.website, href: (v: string) => v},
+    {
+      key: 'website',
+      value: company.contact?.website,
+      href: (v: string) => v,
+      external: true
+    },
+    {
+      key: 'demo',
+      value: company.contact?.demo,
+      href: (v: string) => v,
+      external: true
+    },
     {
       key: 'email',
       value: company.contact?.email,
-      href: (v: string) => `mailto:${v}`
+      href: (v: string) => `mailto:${v}`,
+      external: false
     },
     {
       key: 'phone',
       value: company.contact?.phone,
-      href: (v: string) => `tel:${v.replace(/\s/g, '')}`
+      href: (v: string) => `tel:${v.replace(/\s/g, '')}`,
+      external: false
     }
   ] as const;
 
@@ -198,7 +214,7 @@ function CompanyDetail({company}: {company: Company}) {
               // una tarjeta larguísima con tres renglones y medio metro de
               // vacío a la derecha.
               <dl className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-14 sm:gap-y-4">
-                {contactEntries.map(({key, value, href}) =>
+                {contactEntries.map(({key, value, href, external}) =>
                   value ? (
                     <div key={key} className="flex flex-col gap-0.5">
                       <dt className="text-sm text-dim">{t(`detail.${key}`)}</dt>
@@ -206,7 +222,7 @@ function CompanyDetail({company}: {company: Company}) {
                         <a
                           href={href(value)}
                           className="text-base text-lift underline underline-offset-4"
-                          {...(key === 'website'
+                          {...(external
                             ? {target: '_blank', rel: 'noopener noreferrer'}
                             : null)}
                         >

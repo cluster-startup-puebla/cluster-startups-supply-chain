@@ -61,7 +61,14 @@ export type Company = {
      * español, este campo pasa a `LocalizedText`.
      */
     role?: string;
+    /** Página de la empresa. */
     website?: string;
+    /**
+     * Producto corriendo: tablero en vivo, sandbox, recorrido grabado.
+     * Va aparte del sitio porque para este público pesa más ver la
+     * herramienta funcionando que leer la página institucional.
+     */
+    demo?: string;
     email?: string;
     phone?: string;
   };
@@ -148,7 +155,8 @@ export const companies: readonly Company[] = [
     contact: {
       person: 'Daniel Martínez',
       role: 'CEO',
-      website: 'https://andon.milevadynamics.com/tablero',
+      website: 'https://www.milevadynamics.com',
+      demo: 'https://andon.milevadynamics.com/tablero',
       email: 'Josedaniel.martinez@milevadynamics.com',
       phone: '222 954 3666'
     }
