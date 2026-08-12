@@ -29,7 +29,7 @@ export default function EventBanner() {
             alt={t('logoAlt')}
             width={1108}
             height={300}
-            className="h-[3.85rem] w-auto sm:h-[4.9rem]"
+            className="h-[3.3rem] w-auto sm:h-[4.2rem]"
             style={{filter: WHITE_STROKE}}
           />
           <p className="text-center text-xs font-bold leading-snug tracking-tight text-dim sm:text-sm">
