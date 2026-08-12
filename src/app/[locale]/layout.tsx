@@ -35,8 +35,29 @@ export async function generateMetadata({
   const t = await getTranslations({locale, namespace: 'meta'});
 
   return {
+    metadataBase: new URL('https://cluster-startups-supply-chain.vercel.app'),
     title: t('title'),
-    description: t('description')
+    description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      images: [
+        {
+          url: '/logo-cluster.webp',
+          width: 972,
+          height: 400,
+          alt: t('title')
+        }
+      ],
+      type: 'website',
+      locale: locale === 'es' ? 'es_MX' : 'en_US'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+      images: ['/logo-cluster.webp']
+    }
   };
 }
 
