@@ -3,6 +3,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Container from '@/components/ui/Container';
 import EventBanner from './EventBanner';
 import Logo from './Logo';
+import {Link} from '@/i18n/navigation';
 import {siteConfig} from '@/config/site';
 
 /**
@@ -18,6 +19,7 @@ import {siteConfig} from '@/config/site';
  */
 export default function SiteHeader() {
   const t = useTranslations('header');
+  const tCompanies = useTranslations('companies');
 
   return (
     <>
@@ -32,9 +34,20 @@ export default function SiteHeader() {
 
       <header className="sticky top-0 z-50 border-b border-line bg-ink/80 backdrop-blur-md">
         <Container width="wide">
-          <div className="flex min-h-24 items-center justify-between gap-4">
-            <Logo />
-            <LanguageSwitcher />
+          <div className="flex min-h-24 items-center justify-between gap-3">
+            <Link href="/" aria-label={t('logoAlt')}>
+              <Logo />
+            </Link>
+
+            <div className="flex items-center gap-2 sm:gap-4">
+              <Link
+                href="/empresas"
+                className="min-h-11 shrink-0 content-center rounded-full px-2 text-sm font-bold text-dim transition-colors hover:text-text sm:px-3 sm:text-base"
+              >
+                {tCompanies('navLabel')}
+              </Link>
+              <LanguageSwitcher />
+            </div>
           </div>
         </Container>
       </header>

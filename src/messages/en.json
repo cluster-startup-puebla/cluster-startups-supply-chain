@@ -1,29 +1,21 @@
 {
-  "nav": {
-    "home": "Home",
-    "companies": "Companies",
-    "needs": "Needs"
-  },
-  "home": {
-    "title": "Capim Mexico Supply Chain",
-    "description": "Supply chain platform for Mexican companies"
-  },
   "companies": {
-    "title": "Companies",
-    "list": "Companies list",
-    "viewDetail": "View detail"
-  },
-  "companyDetail": {
-    "title": "Company Detail"
-  },
-  "needs": {
-    "title": "Needs",
-    "description": "Tell us about your needs",
-    "form": {
-      "name": "Name",
+    "title": "Cluster companies",
+    "subtitle": "The technology companies solving real challenges for Puebla's industry.",
+    "viewDetail": "View profile",
+    "pending": "To be confirmed",
+    "pendingNote": "This profile is being prepared. The company has not confirmed its information yet.",
+    "backToList": "Back to companies",
+    "navLabel": "Companies",
+    "count": "{count, plural, one {# company} other {# companies}}",
+    "detail": {
+      "industry": "Industry served",
+      "problem": "Problem it solves",
+      "solution": "Solution or service",
+      "contact": "Contact",
+      "website": "Website",
       "email": "Email",
-      "message": "Message",
-      "submit": "Submit"
+      "phone": "Phone"
     }
   },
   "meta": {
@@ -162,8 +154,8 @@
     }
   },
   "form": {
-    "title": "Connect with the ecosystem",
-    "subtitle": "Leave us your details and we'll get in touch based on what you're looking for.",
+    "title": "Needs intake",
+    "subtitle": "Write down the challenge you have today. That's what we use to connect you with the startups, the talent and the infrastructure that solve it.",
     "optional": "Optional",
     "fields": {
       "name": "Full name",
@@ -192,7 +184,9 @@
       "email": "Enter a valid email address.",
       "consent": "We need your permission to contact you.",
       "generic": "Couldn't send. Please try again."
-    }
+    },
+    "challengeLabel": "Your challenge",
+    "contactLabel": "So we can reach you"
   },
   "footer": {
     "contactLabel": "Contact",

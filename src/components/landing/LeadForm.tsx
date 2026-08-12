@@ -16,11 +16,16 @@ import {initialLeadFormState, type LeadField} from '@/lib/leads/schema';
 import {useLeadForm} from './lead-form-context';
 
 /**
- * Sección 8 — formulario de captura.
+ * Sección 8 — levantamiento de necesidades.
  *
- * Es el único objetivo medible de la página: ocho campos, ni uno más.
- * El campo "reto" es opcional pero es el de mayor valor de toda la web,
- * así que se le da el ancho y el placeholder que invitan a escribirlo.
+ * Es el único objetivo medible de la página. El reto va primero y a todo
+ * el ancho porque es el dato de mayor valor de toda la web: un lead con
+ * reto escrito vale diez sin él, y quien acaba de leer "ese es mi caso"
+ * lo escribe mientras sigue motivado.
+ *
+ * Sigue siendo opcional a propósito: el doc fija ocho campos como techo
+ * y advierte que cada campo obligatorio cuesta conversión en un
+ * formulario que se llena de pie en un pasillo de expo.
  */
 export default function LeadForm() {
   const t = useTranslations('form');
@@ -63,48 +68,24 @@ export default function LeadForm() {
             <form
               action={formAction}
               noValidate
-              className="flex flex-col gap-6 rounded-3xl border border-line bg-white/[0.03] p-6 backdrop-blur-sm sm:p-9"
+              className="flex flex-col gap-9 rounded-3xl border border-line bg-white/[0.03] p-6 backdrop-blur-sm sm:p-9"
             >
-              <div className="grid gap-6 sm:grid-cols-2">
-                <Field
-                  id="name"
-                  label={t('fields.name')}
-                  error={errorFor('name')}
-                >
-                  <Input
-                    id="name"
-                    name="name"
-                    autoComplete="name"
-                    required
-                    aria-invalid={Boolean(state.fieldErrors?.name)}
-                    aria-describedby={describedBy('name')}
-                  />
-                </Field>
+              {/* El reto primero: es el dato que activa el ecosistema. */}
+              <fieldset className="flex flex-col gap-5">
+                <legend className="text-xs font-bold uppercase tracking-[0.14em] text-lift">
+                  {t('challengeLabel')}
+                </legend>
 
                 <Field
-                  id="company"
-                  label={t('fields.company')}
-                  error={errorFor('company')}
-                >
-                  <Input
-                    id="company"
-                    name="company"
-                    autoComplete="organization"
-                    required
-                    aria-invalid={Boolean(state.fieldErrors?.company)}
-                    aria-describedby={describedBy('company')}
-                  />
-                </Field>
-
-                <Field
-                  id="role"
-                  label={t('fields.role')}
+                  id="challenge"
+                  label={t('fields.challenge')}
                   optionalLabel={t('optional')}
                 >
-                  <Input
-                    id="role"
-                    name="role"
-                    autoComplete="organization-title"
+                  <Textarea
+                    id="challenge"
+                    name="challenge"
+                    rows={5}
+                    placeholder={t('challengePlaceholder')}
                   />
                 </Field>
 
@@ -132,39 +113,73 @@ export default function LeadForm() {
                     ))}
                   </Select>
                 </Field>
-              </div>
+              </fieldset>
 
-              {/* El campo de mayor valor de la página: a todo el ancho. */}
-              <Field
-                id="challenge"
-                label={t('fields.challenge')}
-                optionalLabel={t('optional')}
-              >
-                <Textarea
-                  id="challenge"
-                  name="challenge"
-                  rows={4}
-                  placeholder={t('challengePlaceholder')}
-                />
-              </Field>
+              <fieldset className="flex flex-col gap-5 border-t border-line pt-8">
+                <legend className="text-xs font-bold uppercase tracking-[0.14em] text-dim">
+                  {t('contactLabel')}
+                </legend>
 
-              <div className="grid gap-6 sm:grid-cols-2">
-                <Field
-                  id="email"
-                  label={t('fields.email')}
-                  error={errorFor('email')}
-                >
-                  <Input
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field
+                    id="name"
+                    label={t('fields.name')}
+                    error={errorFor('name')}
+                  >
+                    <Input
+                      id="name"
+                      name="name"
+                      autoComplete="name"
+                      required
+                      aria-invalid={Boolean(state.fieldErrors?.name)}
+                      aria-describedby={describedBy('name')}
+                    />
+                  </Field>
+
+                  <Field
+                    id="company"
+                    label={t('fields.company')}
+                    error={errorFor('company')}
+                  >
+                    <Input
+                      id="company"
+                      name="company"
+                      autoComplete="organization"
+                      required
+                      aria-invalid={Boolean(state.fieldErrors?.company)}
+                      aria-describedby={describedBy('company')}
+                    />
+                  </Field>
+
+                  <Field
+                    id="role"
+                    label={t('fields.role')}
+                    optionalLabel={t('optional')}
+                  >
+                    <Input
+                      id="role"
+                      name="role"
+                      autoComplete="organization-title"
+                    />
+                  </Field>
+
+                  <Field
                     id="email"
-                    name="email"
-                    type="email"
-                    inputMode="email"
-                    autoComplete="email"
-                    required
-                    aria-invalid={Boolean(state.fieldErrors?.email)}
-                    aria-describedby={describedBy('email')}
-                  />
-                </Field>
+                    label={t('fields.email')}
+                    error={errorFor('email')}
+                  >
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      inputMode="email"
+                      autoComplete="email"
+                      required
+                      aria-invalid={Boolean(state.fieldErrors?.email)}
+                      aria-describedby={describedBy('email')}
+                    />
+                  </Field>
+                </div>
 
                 <Field
                   id="phone"
@@ -179,17 +194,17 @@ export default function LeadForm() {
                     autoComplete="tel"
                   />
                 </Field>
-              </div>
 
-              <Checkbox
-                id="consent"
-                name="consent"
-                required
-                label={t('fields.consent')}
-                error={errorFor('consent')}
-                aria-invalid={Boolean(state.fieldErrors?.consent)}
-                aria-describedby={describedBy('consent')}
-              />
+                <Checkbox
+                  id="consent"
+                  name="consent"
+                  required
+                  label={t('fields.consent')}
+                  error={errorFor('consent')}
+                  aria-invalid={Boolean(state.fieldErrors?.consent)}
+                  aria-describedby={describedBy('consent')}
+                />
+              </fieldset>
 
               <Button type="submit" disabled={isPending} block>
                 {isPending ? t('submitting') : t('submit')}

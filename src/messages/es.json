@@ -1,29 +1,21 @@
 {
-  "nav": {
-    "home": "Inicio",
-    "companies": "Empresas",
-    "needs": "Necesidades"
-  },
-  "home": {
-    "title": "Capim Mexico Supply Chain",
-    "description": "Plataforma de cadena de suministro para empresas mexicanas"
-  },
   "companies": {
-    "title": "Empresas",
-    "list": "Listado de empresas",
-    "viewDetail": "Ver detalle"
-  },
-  "companyDetail": {
-    "title": "Detalle de Empresa"
-  },
-  "needs": {
-    "title": "Necesidades",
-    "description": "Cuéntanos sobre tus necesidades",
-    "form": {
-      "name": "Nombre",
-      "email": "Correo electrónico",
-      "message": "Mensaje",
-      "submit": "Enviar"
+    "title": "Empresas del clúster",
+    "subtitle": "Las empresas de base tecnológica que resuelven retos de la industria poblana.",
+    "viewDetail": "Ver ficha",
+    "pending": "Pendiente de confirmar",
+    "pendingNote": "Esta ficha está en preparación. La empresa aún no ha confirmado su información.",
+    "backToList": "Volver a empresas",
+    "navLabel": "Empresas",
+    "count": "{count, plural, one {# empresa} other {# empresas}}",
+    "detail": {
+      "industry": "A qué industria sirve",
+      "problem": "Problema que resuelve",
+      "solution": "Solución o servicio",
+      "contact": "Contacto",
+      "website": "Sitio web",
+      "email": "Correo",
+      "phone": "Teléfono"
     }
   },
   "meta": {
@@ -162,8 +154,8 @@
     }
   },
   "form": {
-    "title": "Conéctate con el ecosistema",
-    "subtitle": "Déjanos tus datos y te contactamos según lo que buscas.",
+    "title": "Levantamiento de necesidades",
+    "subtitle": "Escribe el reto que tienes hoy. Con eso te conectamos con las startups, el talento y la infraestructura que lo resuelven.",
     "optional": "Opcional",
     "fields": {
       "name": "Nombre completo",
@@ -192,7 +184,9 @@
       "email": "Escribe un correo válido.",
       "consent": "Necesitamos tu autorización para contactarte.",
       "generic": "No se pudo enviar. Intenta de nuevo."
-    }
+    },
+    "challengeLabel": "Tu reto",
+    "contactLabel": "Para poder contactarte"
   },
   "footer": {
     "contactLabel": "Contacto",
