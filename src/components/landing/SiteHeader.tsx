@@ -6,17 +6,21 @@ import Logo from './Logo';
 import {siteConfig} from '@/config/site';
 
 /**
- * Banner de evento + barra de marca. Fijos arriba: el visitante llega de
- * un QR y necesita saber dónde está sin hacer scroll.
+ * Banner de evento + barra de marca.
  *
- * Máximo dos elementos de marca en la barra (regla del doc: la sopa de
- * logos no se lee).
+ * El banner queda fuera del `<header>` y se va con el scroll: es
+ * información de llegada y no debe ocupar viewport de forma permanente
+ * en un celular. La barra de marca sí es fija, y por eso `<header>` no
+ * la envuelve junto al banner: `sticky` sólo recorre el alto de su
+ * padre, así que un contenedor corto la despegaría a los pocos píxeles.
+ *
+ * Máximo dos logos (regla del doc): el del evento y el del clúster.
  */
 export default function SiteHeader() {
   const t = useTranslations('header');
 
   return (
-    <header className="sticky top-0 z-50">
+    <>
       <a
         href={`#${siteConfig.anchors.form}`}
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-pink focus:px-4 focus:py-2 focus:text-white"
@@ -26,14 +30,14 @@ export default function SiteHeader() {
 
       {siteConfig.eventBannerEnabled ? <EventBanner /> : null}
 
-      <div className="border-b border-hairline bg-paper/95 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-hairline bg-paper/95 backdrop-blur">
         <Container width="wide">
-          <div className="flex min-h-14 items-center justify-between gap-4">
+          <div className="flex min-h-16 items-center justify-between gap-4">
             <Logo />
             <LanguageSwitcher />
           </div>
         </Container>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

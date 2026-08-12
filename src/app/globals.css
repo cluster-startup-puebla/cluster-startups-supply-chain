@@ -47,7 +47,7 @@ body {
 /* El banner y el header son fijos: compensa el salto al navegar por anclas. */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 5.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

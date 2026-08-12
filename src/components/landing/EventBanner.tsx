@@ -1,11 +1,15 @@
+import Image from 'next/image';
 import {useTranslations} from 'next-intl';
 import Container from '@/components/ui/Container';
 
 /**
  * Sección 0 — banner temporal del evento.
  *
- * Se retira poniendo `siteConfig.eventBannerEnabled` en `false`; ninguna
- * otra sección depende de él.
+ * El logo del evento lleva texto negro, así que va sobre una pastilla
+ * blanca: sobre el navy de la barra sería ilegible. El propio logo ya
+ * dice fechas y sede, de modo que el texto sólo aporta el stand.
+ *
+ * Se retira con `siteConfig.eventBannerEnabled = false`.
  */
 export default function EventBanner() {
   const t = useTranslations('eventBanner');
@@ -13,17 +17,20 @@ export default function EventBanner() {
   return (
     <div className="bg-navy text-white">
       <Container width="wide" className="py-2">
-        <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-xs leading-snug sm:text-sm">
-          <span className="font-bold">{t('event')}</span>
-          <span aria-hidden="true" className="opacity-50">
-            ·
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+          <span className="inline-flex rounded bg-white px-2 py-1">
+            <Image
+              src="/logo-evento.webp"
+              alt={t('logoAlt')}
+              width={1108}
+              height={300}
+              className="h-8 w-auto sm:h-10"
+            />
           </span>
-          <span>{t('stand')}</span>
-          <span aria-hidden="true" className="opacity-50">
-            ·
-          </span>
-          <span className="opacity-90">{t('when')}</span>
-        </p>
+          <p className="text-center text-xs font-bold leading-snug sm:text-sm">
+            {t('stand')}
+          </p>
+        </div>
       </Container>
     </div>
   );

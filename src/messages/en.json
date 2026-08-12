@@ -33,14 +33,13 @@
   },
 
   "eventBanner": {
-    "event": "Mexico's Industry Supply Chain",
-    "stand": "Booth 777, Industrial Clusters Pavilion",
-    "when": "August 12–13, Centro Expositor Puebla"
+    "logoAlt": "Mexico's Industry Supply Chain — Centro Expositor Puebla, August 12–13, 2026",
+    "stand": "Booth 777, Industrial Clusters Pavilion"
   },
 
   "header": {
     "skipToContent": "Skip to content",
-    "logoAlt": "Puebla Innovation Cluster"
+    "logoAlt": "Cluster of Startups and Innovation"
   },
 
   "hero": {

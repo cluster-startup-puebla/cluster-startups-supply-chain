@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useTranslations} from 'next-intl';
 import Button from '@/components/ui/Button';
 import {siteConfig} from '@/config/site';
@@ -8,64 +8,49 @@ import {siteConfig} from '@/config/site';
 /**
  * Barra fija inferior en móvil.
  *
- * Aparece al salir del hero y se esconde al llegar al formulario, para
- * no tapar los campos justo cuando el visitante los está llenando.
+ * Aparece al salir del hero y se esconde cuando el formulario ya está a
+ * la vista, para no tapar los campos justo cuando se están llenando.
+ *
+ * Usa un listener de scroll en vez de IntersectionObserver: no necesita
+ * nodo centinela y su condición es legible de un vistazo.
  */
 export default function StickyCta() {
   const t = useTranslations('stickyCta');
   const [visible, setVisible] = useState(false);
-  const sentinel = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const form = document.getElementById(siteConfig.anchors.form);
-    const node = sentinel.current;
-    if (!node) return;
+    const update = () => {
+      const viewport = window.innerHeight;
+      const pastHero = window.scrollY > viewport * 0.6;
 
-    let pastHero = false;
-    let atForm = false;
+      const form = document.getElementById(siteConfig.anchors.form);
+      const atForm = form
+        ? form.getBoundingClientRect().top < viewport * 0.6
+        : false;
 
-    const sync = () => setVisible(pastHero && !atForm);
+      setVisible(pastHero && !atForm);
+    };
 
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => {
-        pastHero = !entry.isIntersecting;
-        sync();
-      },
-      {rootMargin: '0px'}
-    );
-    heroObserver.observe(node);
-
-    const formObserver = form
-      ? new IntersectionObserver(
-          ([entry]) => {
-            atForm = entry.isIntersecting;
-            sync();
-          },
-          {rootMargin: '0px 0px -40% 0px'}
-        )
-      : null;
-    if (form && formObserver) formObserver.observe(form);
+    update();
+    window.addEventListener('scroll', update, {passive: true});
+    window.addEventListener('resize', update);
 
     return () => {
-      heroObserver.disconnect();
-      formObserver?.disconnect();
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
     };
   }, []);
 
   return (
-    <>
-      {/* Marca el final del primer pantallazo. */}
-      <div ref={sentinel} aria-hidden="true" className="h-px" />
-
-      <div
-        className={`fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-paper/95 p-3 backdrop-blur transition-transform duration-200 md:hidden ${
-          visible ? 'translate-y-0' : 'translate-y-full'
-        }`}
-      >
-        <Button href={`#${siteConfig.anchors.form}`} block>
-          {t('label')}
-        </Button>
-      </div>
-    </>
+    <div
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-paper/95 p-3 backdrop-blur transition-transform duration-200 md:hidden ${
+        visible ? 'translate-y-0' : 'translate-y-full'
+      }`}
+      aria-hidden={!visible}
+    >
+      <Button href={`#${siteConfig.anchors.form}`} block tabIndex={visible ? 0 : -1}>
+        {t('label')}
+      </Button>
+    </div>
   );
 }

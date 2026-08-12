@@ -33,14 +33,13 @@
   },
 
   "eventBanner": {
-    "event": "Mexico's Industry Supply Chain",
-    "stand": "Stand 777, Pabellón Clústers Industriales",
-    "when": "12 y 13 de agosto, Centro Expositor Puebla"
+    "logoAlt": "Mexico's Industry Supply Chain — Centro Expositor Puebla, 12 y 13 de agosto de 2026",
+    "stand": "Stand 777, Pabellón Clústers Industriales"
   },
 
   "header": {
     "skipToContent": "Saltar al contenido",
-    "logoAlt": "Clúster de Innovación de Puebla"
+    "logoAlt": "Clúster de Startups e Innovación"
   },
 
   "hero": {

@@ -1,25 +1,24 @@
+import Image from 'next/image';
 import {useTranslations} from 'next-intl';
 
 /**
- * Ranura del logo.
+ * Logo del clúster.
  *
- * PENDIENTE: sustituir el wordmark por el archivo real. Cuando llegue,
- * dejarlo en `public/logo.svg` y cambiar el cuerpo por:
- *
- *   <Image src="/logo.svg" alt={t('logoAlt')} width={140} height={32}
- *          priority className="h-8 w-auto" />
- *
- * Ningún otro componente conoce el logo: se cambia sólo aquí.
+ * `public/logo-cluster.webp` sale del PNG original recortado y con el
+ * blanco hecho transparente, así que también sirve sobre fondo de color.
+ * Ningún otro componente conoce la ruta: se cambia sólo aquí.
  */
 export default function Logo({className = ''}: {className?: string}) {
   const t = useTranslations('header');
 
   return (
-    <span
-      className={`text-base font-bold tracking-tight ${className}`}
-      aria-label={t('logoAlt')}
-    >
-      CLÚSTER<span className="text-pink">.</span>
-    </span>
+    <Image
+      src="/logo-cluster.webp"
+      alt={t('logoAlt')}
+      width={972}
+      height={400}
+      priority
+      className={`h-10 w-auto sm:h-12 ${className}`}
+    />
   );
 }
