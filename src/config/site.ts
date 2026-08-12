@@ -48,7 +48,7 @@ export const siteConfig: SiteConfig = {
   },
 
   /** Enlace al aviso de privacidad. Vacío = se muestra sin enlace. */
-  privacyUrl: ''
+  privacyUrl: '/privacidad'
 };
 
 export type ProfileKey =
