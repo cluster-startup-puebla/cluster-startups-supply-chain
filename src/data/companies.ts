@@ -155,6 +155,7 @@ export const companies: readonly Company[] = [
   {
     slug: 'oxtron',
     name: 'Oxtron',
+    logo: '/empresas/oxtron.webp',
     industries: {
       es: [
         'Agroalimentario',
@@ -176,6 +177,12 @@ export const companies: readonly Company[] = [
     solution: {
       es: 'Dos frentes sobre el mismo dato. La plataforma de huella de carbono alimentaria calcula automáticamente las emisiones de productos e ingredientes contra una base de análisis de ciclo de vida con metodología IPCC y GHG Protocol, y emite etiquetas climáticas verificables; la de inventario de emisiones automatiza el reporte de Alcances 1, 2 y 3 conforme al GHG Protocol y al RETC. Para fuentes fijas, un sistema modular captura el CO₂ con pureza de hasta 90% y lo devuelve como materia prima de policarbonato, metanol y resinas: el residuo de proceso se vuelve flujo de valor.',
       en: 'Two fronts on the same data. The food carbon footprint platform automatically calculates emissions for products and ingredients against a life-cycle assessment database built on IPCC methodology and the GHG Protocol, and issues verifiable climate labels; the emissions inventory platform automates Scope 1, 2 and 3 reporting under the GHG Protocol and Mexico’s RETC. For fixed sources, a modular system captures CO₂ at up to 90% purity and returns it as feedstock for polycarbonate, methanol and resins: a process waste becomes a value stream.'
+    },
+    contact: {
+      person: 'Jazmín Salazar',
+      role: 'CEO',
+      website: 'https://www.oxtron.mx/es/',
+      email: 'info@oxtron.mx'
     }
   },
   {
