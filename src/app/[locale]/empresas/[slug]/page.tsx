@@ -103,7 +103,9 @@ function CompanyDetail({company}: {company: Company}) {
     }
   ] as const;
 
-  const hasContact = contactEntries.some((entry) => entry.value);
+  const person = company.contact?.person;
+  const hasLinks = contactEntries.some((entry) => entry.value);
+  const hasContact = Boolean(person) || hasLinks;
   const isPending = !industries && !company.problem && !company.solution;
 
   return (
@@ -177,7 +179,21 @@ function CompanyDetail({company}: {company: Company}) {
               {t('detail.contact')}
             </h2>
 
-            {hasContact ? (
+            {/* La persona encabeza la tarjeta y no entra en la lista de
+                abajo: es con quien se habla, no un dato más que copiar. */}
+            {person ? (
+              <p className="mt-4 text-lg font-bold">
+                {person}
+                {company.contact?.role ? (
+                  <span className="font-normal text-dim">
+                    {' · '}
+                    {company.contact.role}
+                  </span>
+                ) : null}
+              </p>
+            ) : null}
+
+            {hasLinks ? (
               // A todo lo ancho la lista se tumba en fila: apilada dejaría
               // una tarjeta larguísima con tres renglones y medio metro de
               // vacío a la derecha.
@@ -201,7 +217,12 @@ function CompanyDetail({company}: {company: Company}) {
                   ) : null
                 )}
               </dl>
-            ) : (
+            ) : null}
+
+            {/* "Pendiente" sólo si no hay nada: con una persona dada pero
+                sin correo ni teléfono, colgarlo bajo su nombre sugeriría
+                que el contacto no sirve. */}
+            {hasContact ? null : (
               <p className="mt-4 text-base text-dim/60">{t('pending')}</p>
             )}
           </Card>

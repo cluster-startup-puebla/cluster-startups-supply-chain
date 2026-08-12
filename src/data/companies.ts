@@ -53,6 +53,14 @@ export type Company = {
   /** Solución o servicio que provee. */
   solution?: LocalizedText;
   contact?: {
+    /** Persona con la que se habla, no un buzón genérico. */
+    person?: string;
+    /**
+     * Cargo. Va sin traducir porque hasta ahora todos son siglas que no
+     * se traducen (CEO, CTO); el día que una empresa dé un cargo en
+     * español, este campo pasa a `LocalizedText`.
+     */
+    role?: string;
     website?: string;
     email?: string;
     phone?: string;
@@ -69,6 +77,7 @@ export const companies: readonly Company[] = [
   {
     slug: 'kigo',
     name: 'Kigo',
+    logo: '/empresas/kigo.webp',
     industries: {
       es: [
         'Corporativos',
@@ -91,11 +100,12 @@ export const companies: readonly Company[] = [
       es: 'Kigo Corporativo digitaliza el acceso de punta a punta. El ingreso se hace por QR, reconocimiento facial, invitación digital o lectura de placas y TAG en accesos vehiculares; el sistema verifica identidad, rol, área y vigencia en segundos, y cada evento queda registrado con hora, usuario, área y evidencia para auditoría. Un panel único administra permisos por rol, área, horario y vigencia, con bitácora digital, rondines, botón de pánico, lockers y elevadores.',
       en: 'Kigo Corporativo digitizes access end to end. Entry runs on QR, facial recognition, digital invitation, or plate and TAG reading at vehicle gates; the system verifies identity, role, area and validity in seconds, and every event is logged with time, user, area and evidence for audit. A single panel manages permissions by role, area, schedule and validity, with a digital logbook, guard rounds, panic button, lockers and elevators.'
     },
-    contact: {website: 'https://kigo.pro'}
+    contact: {website: 'https://kigo.pro/'}
   },
   {
     slug: 'kotemah',
     name: 'Kotemah',
+    logo: '/empresas/kotemah.webp',
     industries: {
       es: ['Manufactura', 'Ergonomía', 'Manejo de cargas', 'Seguridad y salud'],
       en: ['Manufacturing', 'Ergonomics', 'Load handling', 'Health and safety']
@@ -107,11 +117,17 @@ export const companies: readonly Company[] = [
     solution: {
       es: 'Un ecosistema que cuida el cuerpo del operador y sostiene el expediente. Equipos de manipulación de carga en gravedad cero y exoesqueletos que quitan el esfuerzo de la tarea sin rediseñar la línea, más ErgoSoft para levantar la evaluación ergonómica, documentar los controles y llevar el seguimiento que pide la norma.',
       en: 'An ecosystem that protects the operator’s body and keeps the records straight. Zero-gravity load handling equipment and exoskeletons take the strain out of the task without redesigning the line, plus ErgoSoft to run the ergonomic assessment, document controls and keep the follow-up the standard requires.'
+    },
+    contact: {
+      person: 'Rodrigo Ruiz',
+      email: 'ventas.koteos@gmail.com',
+      phone: '+52 222 190 1740'
     }
   },
   {
     slug: 'mileva-dynamics',
     name: 'Mileva Dynamics',
+    logo: '/empresas/mileva-dynamics.webp',
     industries: {
       es: [
         'Manufactura',
@@ -128,6 +144,12 @@ export const companies: readonly Company[] = [
     solution: {
       es: 'Sistema Andon de control de presencia y productividad por reconocimiento facial. Corre en el borde, en el nodo de la propia estación: sin nube, sin infraestructura pesada y con los datos biométricos dentro del sitio. Mide intervalos verificables de inicio y fin —no acumulados estimados— y estructura la operación en una plataforma central: gerencia da de alta líneas y supervisores, y cada supervisor arma su equipo, asigna operadores a estaciones y sigue rendimientos, ausencias y desbalances.',
       en: 'An Andon system for presence and productivity control through facial recognition. It runs at the edge, on the station’s own node: no cloud, no heavy infrastructure, and biometric data never leaves the site. It measures verifiable start and end intervals — not estimated totals — and structures the operation in a central platform: management registers lines and supervisors, and each supervisor builds their team, assigns operators to stations and tracks output, absences and imbalances.'
+    },
+    contact: {
+      person: 'Daniel Martínez',
+      role: 'CEO',
+      email: 'Josedaniel.martinez@milevadynamics.com',
+      phone: '222 954 3666'
     }
   },
   {
@@ -159,6 +181,7 @@ export const companies: readonly Company[] = [
   {
     slug: 'radek',
     name: 'Radek',
+    logo: '/empresas/radek.webp',
     industries: {
       es: [
         'Multisectorial',
@@ -180,11 +203,17 @@ export const companies: readonly Company[] = [
     solution: {
       es: 'Convierte el desarrollo interno en un negocio aparte, para que la misma inversión se pague dos veces: primero al digitalizar los procesos de la empresa, después al lanzar esa solución al mercado y generar ingresos nuevos. Construye el side business digital de la empresa consolidada levantando la startup de su propio sector.',
       en: 'Turns in-house development into a business of its own, so the same investment pays for itself twice: first by digitizing the company’s processes, then by taking that solution to market as a new revenue line. It builds an established company’s digital side business by launching the startup of its own sector.'
+    },
+    contact: {
+      person: 'Yamil Álvarez',
+      role: 'CEO',
+      email: 'yamil@radek.mx'
     }
   },
   {
     slug: 'sabia',
     name: 'Sabia',
+    logo: '/empresas/sabia.webp',
     industries: {
       es: [
         'Industria y servicios',
@@ -206,6 +235,11 @@ export const companies: readonly Company[] = [
     solution: {
       es: 'Hace que los sistemas se hablen entre sí e implementa soluciones de IA que estandarizan, ordenan y miden el proceso antes de automatizarlo. El compromiso es concreto: cualquier Excel que hoy sostenga la operación se convierte en plataforma en ocho semanas, con el dato en un solo lugar y el proceso medido de punta a punta.',
       en: 'Gets systems talking to each other and deploys AI that standardizes, orders and measures a process before automating it. The commitment is concrete: any spreadsheet currently holding the operation together becomes a platform in eight weeks, with the data in one place and the process measured end to end.'
+    },
+    contact: {
+      person: 'Álvaro Castillo',
+      email: 'hola@alvarocastillo.dev',
+      phone: '221 240 1587'
     }
   }
 ];
