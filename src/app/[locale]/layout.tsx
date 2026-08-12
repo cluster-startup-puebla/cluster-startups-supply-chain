@@ -41,6 +41,7 @@ export async function generateMetadata({
     openGraph: {
       title: t('title'),
       description: t('description'),
+      url: `https://cluster-startups-supply-chain.vercel.app/${locale}`,
       images: [
         {
           url: '/logo-cluster.webp',
