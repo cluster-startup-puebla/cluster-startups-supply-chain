@@ -40,7 +40,7 @@ export type Company = {
   slug: string;
   name: string;
   /**
-   * Ruta del logo dentro de `public/`, p. ej. `/empresas/kigo.webp`.
+   * Ruta del logo dentro de `public/`, p. ej. `/empresas/radek.webp`.
    * Sin logo, la ficha cae en un recurso tipográfico con el nombre.
    * Conviene subirlos monocromos o con fondo transparente: el mundo es
    * oscuro y un PNG con fondo blanco se ve como recuadro pegado.
@@ -81,34 +81,6 @@ export function localize<T>(value: Record<Locale, T>, locale: string): T {
 
 /** Orden alfabético por nombre. */
 export const companies: readonly Company[] = [
-  {
-    slug: 'kigo',
-    name: 'Kigo',
-    logo: '/empresas/kigo.webp',
-    industries: {
-      es: [
-        'Corporativos',
-        'Parques industriales',
-        'Control de accesos',
-        'Seguridad física'
-      ],
-      en: [
-        'Corporate campuses',
-        'Industrial parks',
-        'Access control',
-        'Physical security'
-      ]
-    },
-    problem: {
-      es: 'El control de accesos sigue siendo una libreta en caseta. Colaboradores, visitantes y proveedores se acumulan en la entrada mientras el guardia captura datos a mano, y cuando hay que auditar quién entró, a qué área y con qué permiso, la evidencia está incompleta o no existe. La carga cae entera sobre el personal de seguridad y un acceso no autorizado se queda sin rastro.',
-      en: 'Access control still runs on a logbook at the gate. Employees, visitors and suppliers pile up at the entrance while a guard writes down details by hand, and when someone needs to audit who came in, to which area and under what permission, the evidence is incomplete or missing. The entire load falls on the security staff, and an unauthorized entry leaves no trace.'
-    },
-    solution: {
-      es: 'Kigo Corporativo digitaliza el acceso de punta a punta. El ingreso se hace por QR, reconocimiento facial, invitación digital o lectura de placas y TAG en accesos vehiculares; el sistema verifica identidad, rol, área y vigencia en segundos, y cada evento queda registrado con hora, usuario, área y evidencia para auditoría. Un panel único administra permisos por rol, área, horario y vigencia, con bitácora digital, rondines, botón de pánico, lockers y elevadores.',
-      en: 'Kigo Corporativo digitizes access end to end. Entry runs on QR, facial recognition, digital invitation, or plate and TAG reading at vehicle gates; the system verifies identity, role, area and validity in seconds, and every event is logged with time, user, area and evidence for audit. A single panel manages permissions by role, area, schedule and validity, with a digital logbook, guard rounds, panic button, lockers and elevators.'
-    },
-    contact: {website: 'https://kigo.pro/'}
-  },
   {
     slug: 'kotemah',
     name: 'Kotemah',
