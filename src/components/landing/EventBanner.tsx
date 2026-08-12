@@ -5,20 +5,18 @@ import Container from '@/components/ui/Container';
 /**
  * Sección 0 — banner temporal del evento.
  *
- * El logo va aplanado a blanco con `brightness(0) invert(1)`: sobre la
- * tinta, su versión a color exigía una pastilla blanca que rompía la
- * barra. En blanco pleno se integra y gana tamaño.
- *
- * `logo-evento-mono.webp` recorta el escudo "Puebla Cinco de Mayo" del
- * original: al aplanarse a blanco quedaba como una silueta lisa sin
- * lectura. El lockup del evento se conserva íntegro.
- *
- * Contrapartida a tener presente: el listón tricolor pierde su color. Si
- * la organización del evento exige la marca a color y con escudo, hay
- * que volver a `logo-evento.webp` sobre pastilla clara.
+ * El logo va a color original. Sobre la tinta, su texto negro se
+ * perdería, así que lleva un contorno blanco hecho con `drop-shadow`
+ * encadenados: cada uno desplaza la silueta un píxel y la pinta de
+ * blanco, de modo que el filo sigue el recorte real del arte en lugar de
+ * encerrarlo en un marco.
  *
  * Se retira con `siteConfig.eventBannerEnabled = false`.
  */
+const WHITE_STROKE =
+  'drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) ' +
+  'drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff)';
+
 export default function EventBanner() {
   const t = useTranslations('eventBanner');
 
@@ -27,11 +25,12 @@ export default function EventBanner() {
       <Container width="wide" className="py-3">
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
           <Image
-            src="/logo-evento-mono.webp"
+            src="/logo-evento.webp"
             alt={t('logoAlt')}
-            width={876}
+            width={1108}
             height={300}
-            className="h-11 w-auto [filter:brightness(0)_invert(1)] sm:h-14"
+            className="h-[3.85rem] w-auto sm:h-[4.9rem]"
+            style={{filter: WHITE_STROKE}}
           />
           <p className="text-center text-xs font-bold leading-snug tracking-tight text-dim sm:text-sm">
             {t('stand')}
