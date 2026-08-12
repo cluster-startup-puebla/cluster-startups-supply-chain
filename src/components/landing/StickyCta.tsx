@@ -43,12 +43,16 @@ export default function StickyCta() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-paper/95 p-3 backdrop-blur transition-transform duration-200 md:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-line bg-ink/90 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-300 ease-out md:hidden ${
         visible ? 'translate-y-0' : 'translate-y-full'
       }`}
       aria-hidden={!visible}
     >
-      <Button href={`#${siteConfig.anchors.form}`} block tabIndex={visible ? 0 : -1}>
+      <Button
+        href={`#${siteConfig.anchors.form}`}
+        block
+        tabIndex={visible ? 0 : -1}
+      >
         {t('label')}
       </Button>
     </div>

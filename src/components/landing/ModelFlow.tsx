@@ -9,8 +9,10 @@ import {siteConfig} from '@/config/site';
 /**
  * Sección 5 — cómo funciona el modelo.
  *
- * Diagrama, nunca texto corrido: horizontal en escritorio, vertical en
- * celular. Es la traducción visual del recorrido N1 → N5.
+ * Cuatro nodos encadenados: el mismo círculo luminoso del campo, ahora
+ * conectado por una línea que se enciende de magenta. Es la traducción
+ * visual del recorrido N1 → N5, y el único sitio donde los nodos se
+ * tocan entre sí. Horizontal en escritorio, vertical en celular.
  */
 const steps: readonly {key: string; icon: IconName}[] = [
   {key: 'challenge', icon: 'factory'},
@@ -23,39 +25,41 @@ export default function ModelFlow() {
   const t = useTranslations('model');
 
   return (
-    <Section tone="paper" id={siteConfig.anchors.model}>
+    <Section tone="raised" id={siteConfig.anchors.model}>
       <Container>
-        <div className="flex flex-col gap-6 sm:gap-12">
-          <Heading as="h2" size="lg">
+        <div className="flex flex-col gap-8 sm:gap-14">
+          <Heading as="h2" size="xl">
             {t('title')}
           </Heading>
 
-          <ol className="flex flex-col gap-2 md:flex-row md:items-stretch">
+          <ol className="relative flex flex-col gap-0 md:flex-row">
             {steps.map(({key, icon}, index) => (
               <li
                 key={key}
-                className="flex flex-col items-center gap-2 md:flex-1 md:flex-row md:gap-2"
+                className="relative flex flex-1 gap-5 pb-9 last:pb-0 md:flex-col md:gap-5 md:pb-0"
               >
-                <div className="flex w-full flex-col items-center gap-3 rounded-xl border-2 border-navy/20 bg-navy/5 px-4 py-6 text-center md:h-full md:justify-start">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-navy text-white">
-                    <Icon name={icon} className="size-6" />
-                  </span>
-                  <span className="text-balance text-sm font-bold leading-snug text-navy sm:text-base">
+                {/* Hilo que conecta los nodos: vertical en móvil, horizontal en escritorio. */}
+                {index < steps.length - 1 ? (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-[1.375rem] top-12 bottom-1 w-px bg-gradient-to-b from-magenta to-transparent md:left-12 md:right-0 md:top-[1.375rem] md:bottom-auto md:h-px md:w-auto md:bg-gradient-to-r"
+                  />
+                ) : null}
+
+                <span className="relative z-10 flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-raised text-lift shadow-[0_0_20px_-4px_var(--magenta)]">
+                  <Icon name={icon} className="size-5" />
+                </span>
+
+                <div className="md:pr-8">
+                  <span className="block text-base font-bold leading-snug tracking-tight sm:text-lg">
                     {t(`steps.${key}`)}
                   </span>
                 </div>
-
-                {index < steps.length - 1 ? (
-                  <span aria-hidden="true" className="shrink-0 text-pink">
-                    <Icon name="arrowDown" className="size-6 md:hidden" />
-                    <Icon name="arrowRight" className="hidden size-6 md:block" />
-                  </span>
-                ) : null}
               </li>
             ))}
           </ol>
 
-          <Text muted>{t('body')}</Text>
+          <Text dim>{t('body')}</Text>
         </div>
       </Container>
     </Section>

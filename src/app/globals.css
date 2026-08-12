@@ -1,57 +1,107 @@
 @import "tailwindcss";
 
 /*
- * Tokens de marca.
- * Cambiar un valor aquí cambia toda la página: ningún componente
- * escribe un color literal.
+ * MUNDO VISUAL — "campo de nodos"
+ *
+ * Fondo de tinta con florecimientos magenta donde el ecosistema se
+ * densifica. Todo el color sale de aquí: ningún componente escribe un
+ * valor literal, así que cambiar la marca es editar este bloque.
  */
 :root {
-  --brand-navy: #16284f;
-  --brand-pink: #e8186a;
-  --brand-ink: #0a0a0a;
-  --brand-paper: #ffffff;
+  /* Suelo */
+  --ink: #080b14;
+  --ink-raised: #101827;
+  --ink-deep: #05070d;
 
-  /* Superficies derivadas */
-  --background: var(--brand-paper);
-  --foreground: #171717;
-  --muted: #52525b;
-  --hairline: #e4e4e7;
+  /* Marca */
+  --magenta: #a32477;
+  --magenta-lift: #d43a9c;
+  --rosa: #e8186a;
+  --violet: #5b2a9d;
+
+  /* Texto sobre tinta */
+  --text: #f5f3f8;
+  --text-dim: #b3adc2;
+
+  --line: rgb(255 255 255 / 0.12);
+  --line-strong: rgb(255 255 255 / 0.24);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-hairline: var(--hairline);
+  --color-ink: var(--ink);
+  --color-raised: var(--ink-raised);
+  --color-deep: var(--ink-deep);
 
-  --color-navy: var(--brand-navy);
-  --color-pink: var(--brand-pink);
-  --color-ink: var(--brand-ink);
-  --color-paper: var(--brand-paper);
+  --color-magenta: var(--magenta);
+  --color-lift: var(--magenta-lift);
+  --color-rosa: var(--rosa);
+  --color-violet: var(--violet);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-text: var(--text);
+  --color-dim: var(--text-dim);
+  --color-line: var(--line);
+
+  --font-sans: var(--font-archivo);
 }
 
-/*
- * La landing define su propio fondo por sección (blanco / rosa / navy /
- * negro), así que no se invierte con el esquema del sistema.
- */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--ink);
+  color: var(--text);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* El banner y el header son fijos: compensa el salto al navegar por anclas. */
+/* La barra de marca es fija: compensa el salto al navegar por anclas. */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 7.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+}
+
+/*
+ * Cráter: el florecimiento magenta que marca dónde se concentra el
+ * ecosistema. Se pinta con gradientes, sin imágenes ni canvas, para no
+ * gastar el presupuesto de 3 s en 4G saturado.
+ */
+.crater {
+  background:
+    radial-gradient(
+      60% 50% at 22% 18%,
+      color-mix(in oklab, var(--magenta) 55%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      45% 45% at 82% 12%,
+      color-mix(in oklab, var(--violet) 45%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      70% 60% at 50% 108%,
+      color-mix(in oklab, var(--magenta) 30%, transparent),
+      transparent 70%
+    );
+}
+
+.crater-soft {
+  background:
+    radial-gradient(
+      55% 60% at 88% 8%,
+      color-mix(in oklab, var(--magenta) 32%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      50% 55% at 6% 92%,
+      color-mix(in oklab, var(--violet) 30%, transparent),
+      transparent 72%
+    );
+}
+
+/* Filo superior de luz: separa bloques sin recurrir a un borde duro. */
+.edge-lit {
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.08);
 }

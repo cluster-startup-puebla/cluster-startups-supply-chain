@@ -31,26 +31,28 @@ export default function EntryRoutes() {
   const t = useTranslations('routes');
 
   return (
-    <Section tone="navy">
+    <Section tone="void" nodes="dense">
       <Container>
-        <div className="flex flex-col gap-6 sm:gap-12">
-          <div className="flex flex-col gap-3">
-            <Heading as="h2" size="lg">
+        <div className="flex flex-col gap-8 sm:gap-14">
+          <div className="flex flex-col gap-4">
+            <Heading as="h2" size="xl">
               {t('title')}
             </Heading>
-            <Text className="opacity-80">{t('subtitle')}</Text>
+            <Text dim>{t('subtitle')}</Text>
           </div>
 
-          <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
-            {routeKeys.map((key) => (
-              <Card key={key} filled>
-                <Icon name={icons[key]} className="size-8 text-pink" />
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
+            {routeKeys.map((key, index) => (
+              <Card key={key} lit={index === 0}>
+                <span className="flex size-11 items-center justify-center rounded-full border border-line bg-white/5 text-lift">
+                  <Icon name={icons[key]} className="size-5" />
+                </span>
 
-                <Heading as="h3" size="sm" className="mt-4">
+                <Heading as="h3" size="md" className="mt-5">
                   {t(`${key}.title`)}
                 </Heading>
 
-                <Text className="mt-3 opacity-80" full>
+                <Text className="mt-3" dim full>
                   {t(`${key}.intro`)}
                 </Text>
 
@@ -59,7 +61,7 @@ export default function EntryRoutes() {
                   items={t.raw(`${key}.items`) as string[]}
                 />
 
-                <div className="mt-auto pt-6">
+                <div className="mt-auto pt-7">
                   <ProfileCtaButton profile={key}>
                     {t(`${key}.cta`)}
                   </ProfileCtaButton>

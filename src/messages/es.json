@@ -26,33 +26,28 @@
       "submit": "Enviar"
     }
   },
-
   "meta": {
     "title": "Clúster de Innovación · Puebla",
     "description": "La capa de innovación del ecosistema tecnológico de Puebla. Articulamos startups, talento, infraestructura e inversión alrededor de los retos reales de la industria."
   },
-
   "eventBanner": {
     "logoAlt": "Mexico's Industry Supply Chain — Centro Expositor Puebla, 12 y 13 de agosto de 2026",
     "stand": "Stand 777, Pabellón Clústers Industriales"
   },
-
   "header": {
     "skipToContent": "Saltar al contenido",
     "logoAlt": "Clúster de Startups e Innovación"
   },
-
   "hero": {
-    "title": "La capa de innovación del ecosistema tecnológico de Puebla",
+    "titleLead": "La capa de innovación",
+    "titleTail": "del ecosistema tecnológico de Puebla",
     "subtitle": "Articulamos startups, talento, infraestructura e inversión alrededor de los retos reales de la industria.",
     "ctaPrimary": "Cuéntanos tu reto",
     "ctaSecondary": "Cómo funciona"
   },
-
   "positioning": {
     "text": "Los demás clústers de Puebla son industrias. Nosotros somos la capa que las conecta con la tecnología, el talento y las startups que las modernizan."
   },
-
   "gap": {
     "title": "Un catálogo de proveedores conecta lo que ya existe. Nosotros construimos lo que falta.",
     "supplier": {
@@ -65,7 +60,6 @@
     },
     "cta": "Ese es mi caso"
   },
-
   "routes": {
     "title": "Cuatro rutas de entrada",
     "subtitle": "Encuentra la tuya y déjanos tus datos. Te contactamos según lo que buscas.",
@@ -110,7 +104,6 @@
       "cta": "Explorar convenio"
     }
   },
-
   "model": {
     "title": "Cómo funciona el modelo",
     "body": "La industria trae un problema real. El ecosistema aporta el talento y las startups que lo resuelven. La solución se construye, se valida y se escala con acceso a inversión. El resultado regresa a la industria modernizándola.",
@@ -121,7 +114,6 @@
       "scale": "Escalamiento e inversión"
     }
   },
-
   "credibility": {
     "title": "Por qué el clúster",
     "items": {
@@ -143,7 +135,6 @@
       }
     }
   },
-
   "infrastructure": {
     "title": "Infraestructura",
     "subtitle": "Tienes dónde construir.",
@@ -170,7 +161,6 @@
       }
     }
   },
-
   "form": {
     "title": "Conéctate con el ecosistema",
     "subtitle": "Déjanos tus datos y te contactamos según lo que buscas.",
@@ -204,7 +194,6 @@
       "generic": "No se pudo enviar. Intenta de nuevo."
     }
   },
-
   "footer": {
     "contactLabel": "Contacto",
     "contactName": "Álvaro Castillo — Cluster Manager",
@@ -215,7 +204,6 @@
     "eventNote": "Durante el evento nos encuentras en el Stand 777, Pabellón Clústers Industriales.",
     "pending": "Por confirmar"
   },
-
   "stickyCta": {
     "label": "Cuéntanos tu reto"
   }

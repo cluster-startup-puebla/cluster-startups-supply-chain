@@ -1,21 +1,23 @@
 import type {ReactNode} from 'react';
 
 /**
- * Jerarquía por peso y tamaño, nunca por mayúsculas ni familias
- * decorativas. El nivel semántico (`as`) es independiente del tamaño.
+ * Jerarquía por peso y tamaño. Archivo aguanta tracking muy cerrado en
+ * los tamaños grandes, que es lo que le da el aire de señalética
+ * industrial sin recurrir a mayúsculas.
  */
 type HeadingProps = {
   children: ReactNode;
   as?: 'h1' | 'h2' | 'h3' | 'h4';
-  size?: 'xl' | 'lg' | 'md' | 'sm';
+  size?: 'hero' | 'xl' | 'lg' | 'md' | 'sm';
   className?: string;
 };
 
 const sizes = {
-  xl: 'text-[2rem] leading-[1.15] sm:text-5xl',
-  lg: 'text-2xl leading-tight sm:text-4xl',
-  md: 'text-xl leading-snug sm:text-2xl',
-  sm: 'text-lg leading-snug'
+  hero: 'text-[2.6rem] leading-[1.02] tracking-[-0.035em] sm:text-6xl lg:text-7xl',
+  xl: 'text-[2rem] leading-[1.08] tracking-[-0.03em] sm:text-5xl',
+  lg: 'text-[1.65rem] leading-[1.12] tracking-[-0.025em] sm:text-4xl',
+  md: 'text-xl leading-snug tracking-[-0.02em] sm:text-2xl',
+  sm: 'text-lg leading-snug tracking-[-0.015em]'
 } as const;
 
 export default function Heading({
@@ -25,9 +27,7 @@ export default function Heading({
   className = ''
 }: HeadingProps) {
   return (
-    <Tag
-      className={`text-balance font-bold tracking-tight ${sizes[size]} ${className}`}
-    >
+    <Tag className={`text-balance font-bold ${sizes[size]} ${className}`}>
       {children}
     </Tag>
   );

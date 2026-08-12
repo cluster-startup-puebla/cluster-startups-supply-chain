@@ -2,11 +2,15 @@ import Image from 'next/image';
 import {useTranslations} from 'next-intl';
 
 /**
- * Logo del clúster.
+ * Logo del clúster, en blanco sólido.
  *
- * `public/logo-cluster.webp` sale del PNG original recortado y con el
- * blanco hecho transparente, así que también sirve sobre fondo de color.
- * Ningún otro componente conoce la ruta: se cambia sólo aquí.
+ * El archivo original combina magenta con gris medio; ese gris se hunde
+ * sobre la tinta. En vez de mantener una segunda copia recoloreada, se
+ * aplana con `brightness(0) invert(1)`, que lleva a blanco cualquier
+ * píxel opaco y respeta el canal alfa. Un solo archivo, cero deriva
+ * entre variantes.
+ *
+ * Ningún otro componente conoce la ruta ni el filtro: se cambia aquí.
  */
 export default function Logo({className = ''}: {className?: string}) {
   const t = useTranslations('header');
@@ -18,7 +22,7 @@ export default function Logo({className = ''}: {className?: string}) {
       width={972}
       height={400}
       priority
-      className={`h-10 w-auto sm:h-12 ${className}`}
+      className={`[filter:brightness(0)_invert(1)] ${className || 'h-16 w-auto sm:h-[4.5rem]'}`}
     />
   );
 }

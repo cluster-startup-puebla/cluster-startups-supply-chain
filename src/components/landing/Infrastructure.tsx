@@ -11,7 +11,9 @@ import Text from '@/components/ui/Text';
  *
  * Este público cree en fierros, no en conceptos. Los íconos son
  * marcadores: se sustituyen por fotos reales del Hub en cuanto existan,
- * nunca por stock genérico.
+ * nunca por stock genérico de gente sonriendo con tablets.
+ *
+ * 1 columna en móvil, 3 en escritorio (spec del doc).
  */
 const items: readonly {key: string; icon: IconName}[] = [
   {key: 'hub', icon: 'building'},
@@ -25,25 +27,26 @@ export default function Infrastructure() {
   const t = useTranslations('infrastructure');
 
   return (
-    <Section tone="navy">
+    <Section tone="craterSoft" nodes="sparse">
       <Container>
-        <div className="flex flex-col gap-6 sm:gap-12">
-          <div className="flex flex-col gap-3">
-            <Heading as="h2" size="lg">
+        <div className="flex flex-col gap-8 sm:gap-14">
+          <div className="flex flex-col gap-4">
+            <Heading as="h2" size="xl">
               {t('title')}
             </Heading>
-            <Text className="opacity-80">{t('subtitle')}</Text>
+            <Text dim>{t('subtitle')}</Text>
           </div>
 
-          {/* 1 columna en móvil, 3 en escritorio (spec del doc). */}
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {items.map(({key, icon}) => (
-              <Card key={key} filled>
-                <Icon name={icon} className="size-8 text-pink" />
-                <Heading as="h3" size="sm" className="mt-3">
+              <Card key={key}>
+                <span className="flex size-11 items-center justify-center rounded-full border border-line bg-white/5 text-lift">
+                  <Icon name={icon} className="size-5" />
+                </span>
+                <Heading as="h3" size="sm" className="mt-5">
                   {t(`items.${key}.title`)}
                 </Heading>
-                <Text size="sm" className="mt-2 opacity-80" full>
+                <Text size="sm" className="mt-2" dim full>
                   {t(`items.${key}.body`)}
                 </Text>
               </Card>

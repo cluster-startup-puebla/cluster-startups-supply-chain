@@ -23,16 +23,16 @@ export default function SiteHeader() {
     <>
       <a
         href={`#${siteConfig.anchors.form}`}
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-pink focus:px-4 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-rosa focus:px-5 focus:py-3 focus:font-bold focus:text-white"
       >
         {t('skipToContent')}
       </a>
 
       {siteConfig.eventBannerEnabled ? <EventBanner /> : null}
 
-      <header className="sticky top-0 z-50 border-b border-hairline bg-paper/95 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-line bg-ink/80 backdrop-blur-md">
         <Container width="wide">
-          <div className="flex min-h-16 items-center justify-between gap-4">
+          <div className="flex min-h-24 items-center justify-between gap-4">
             <Logo />
             <LanguageSwitcher />
           </div>

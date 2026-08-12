@@ -26,33 +26,28 @@
       "submit": "Submit"
     }
   },
-
   "meta": {
     "title": "Innovation Cluster · Puebla",
     "description": "The innovation layer of Puebla's technology ecosystem. We connect startups, talent, infrastructure and investment around the real challenges of industry."
   },
-
   "eventBanner": {
     "logoAlt": "Mexico's Industry Supply Chain — Centro Expositor Puebla, August 12–13, 2026",
     "stand": "Booth 777, Industrial Clusters Pavilion"
   },
-
   "header": {
     "skipToContent": "Skip to content",
     "logoAlt": "Cluster of Startups and Innovation"
   },
-
   "hero": {
-    "title": "The innovation layer of Puebla's technology ecosystem",
+    "titleLead": "The innovation layer",
+    "titleTail": "of Puebla's technology ecosystem",
     "subtitle": "We connect startups, talent, infrastructure and investment around the real challenges of industry.",
     "ctaPrimary": "Tell us your challenge",
     "ctaSecondary": "How it works"
   },
-
   "positioning": {
     "text": "The other clusters in Puebla are industries. We are the layer that connects them with the technology, the talent and the startups that modernize them."
   },
-
   "gap": {
     "title": "A supplier directory connects what already exists. We build what's missing.",
     "supplier": {
@@ -65,7 +60,6 @@
     },
     "cta": "That's my case"
   },
-
   "routes": {
     "title": "Four ways in",
     "subtitle": "Find yours and leave us your details. We'll get in touch based on what you're looking for.",
@@ -110,7 +104,6 @@
       "cta": "Explore an agreement"
     }
   },
-
   "model": {
     "title": "How the model works",
     "body": "Industry brings a real problem. The ecosystem supplies the talent and the startups that solve it. The solution gets built, validated and scaled with access to investment. The result goes back to industry and modernizes it.",
@@ -121,7 +114,6 @@
       "scale": "Scale-up and investment"
     }
   },
-
   "credibility": {
     "title": "Why the cluster",
     "items": {
@@ -143,7 +135,6 @@
       }
     }
   },
-
   "infrastructure": {
     "title": "Infrastructure",
     "subtitle": "You have somewhere to build.",
@@ -170,7 +161,6 @@
       }
     }
   },
-
   "form": {
     "title": "Connect with the ecosystem",
     "subtitle": "Leave us your details and we'll get in touch based on what you're looking for.",
@@ -204,7 +194,6 @@
       "generic": "Couldn't send. Please try again."
     }
   },
-
   "footer": {
     "contactLabel": "Contact",
     "contactName": "Álvaro Castillo — Cluster Manager",
@@ -215,7 +204,6 @@
     "eventNote": "During the event you'll find us at Booth 777, Industrial Clusters Pavilion.",
     "pending": "To be confirmed"
   },
-
   "stickyCta": {
     "label": "Tell us your challenge"
   }

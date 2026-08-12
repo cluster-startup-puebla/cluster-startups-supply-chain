@@ -38,7 +38,7 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 rounded-full border border-line p-1">
       {routing.locales.map((loc) => {
         const isActive = locale === loc;
 
@@ -50,10 +50,10 @@ export default function LanguageSwitcher() {
             aria-label={localeNames[loc]}
             aria-current={isActive ? 'true' : undefined}
             onClick={() => switchLocale(loc)}
-            className={`min-h-11 min-w-11 rounded-lg px-2 text-sm transition-colors ${
+            className={`min-h-9 min-w-10 rounded-full px-2 text-sm transition-colors duration-150 ${
               isActive
-                ? 'font-bold text-navy underline underline-offset-4'
-                : 'font-normal text-muted hover:text-navy'
+                ? 'bg-white/10 font-bold text-text'
+                : 'font-normal text-dim hover:text-text'
             }`}
           >
             {localeCodes[loc]}

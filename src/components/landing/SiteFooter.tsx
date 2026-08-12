@@ -1,12 +1,14 @@
 import {useTranslations} from 'next-intl';
 import Container from '@/components/ui/Container';
+import Logo from './Logo';
 import {siteConfig} from '@/config/site';
 
 /**
  * Sección 9 — footer.
  *
- * Los datos de contacto y redes viven en `siteConfig`. Mientras estén
- * vacíos se muestra "Por confirmar" en vez de un enlace roto.
+ * Cierra la página en el punto más oscuro del mundo visual: el campo de
+ * nodos se apaga. Los datos de contacto viven en `siteConfig`; mientras
+ * estén vacíos se muestra "Por confirmar" en vez de un enlace roto.
  */
 const socialLabels = {
   linkedin: 'LinkedIn',
@@ -22,28 +24,30 @@ export default function SiteFooter() {
   ).filter((key) => siteConfig.social[key] !== '');
 
   return (
-    <footer className="bg-ink py-12 text-white sm:py-16">
+    <footer className="border-t border-line bg-deep py-14 text-text sm:py-20">
       <Container>
-        <div className="grid gap-8 sm:grid-cols-2">
+        <Logo className="h-14 w-auto sm:h-16" />
+
+        <div className="mt-10 grid gap-9 sm:grid-cols-2 lg:grid-cols-3">
           <div className="flex flex-col gap-2">
-            <h2 className="text-sm font-bold uppercase tracking-wide opacity-60">
+            <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-dim">
               {t('contactLabel')}
             </h2>
             <p className="text-base">{t('contactName')}</p>
             {siteConfig.contact.email ? (
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="text-base underline underline-offset-4"
+                className="text-base text-lift underline underline-offset-4"
               >
                 {siteConfig.contact.email}
               </a>
             ) : (
-              <p className="text-base opacity-50">{t('pending')}</p>
+              <p className="text-base text-dim/60">{t('pending')}</p>
             )}
             {siteConfig.contact.phone ? (
               <a
                 href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
-                className="text-base underline underline-offset-4"
+                className="text-base text-lift underline underline-offset-4"
               >
                 {siteConfig.contact.phone}
               </a>
@@ -51,7 +55,7 @@ export default function SiteFooter() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h2 className="text-sm font-bold uppercase tracking-wide opacity-60">
+            <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-dim">
               {t('locationLabel')}
             </h2>
             <p className="max-w-[40ch] text-base leading-relaxed">
@@ -61,7 +65,7 @@ export default function SiteFooter() {
 
           {socials.length > 0 ? (
             <div className="flex flex-col gap-2">
-              <h2 className="text-sm font-bold uppercase tracking-wide opacity-60">
+              <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-dim">
                 {t('socialLabel')}
               </h2>
               <ul className="flex flex-wrap gap-4">
@@ -69,7 +73,7 @@ export default function SiteFooter() {
                   <li key={key}>
                     <a
                       href={siteConfig.social[key]}
-                      className="text-base underline underline-offset-4"
+                      className="text-base text-lift underline underline-offset-4"
                       rel="noopener noreferrer"
                       target="_blank"
                     >
@@ -82,20 +86,20 @@ export default function SiteFooter() {
           ) : null}
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-white/15 pt-6 text-sm">
+        <div className="mt-12 flex flex-col gap-4 border-t border-line pt-7 text-sm">
           {siteConfig.eventBannerEnabled ? (
-            <p className="opacity-70">{t('eventNote')}</p>
+            <p className="text-dim">{t('eventNote')}</p>
           ) : null}
 
           {siteConfig.privacyUrl ? (
             <a
               href={siteConfig.privacyUrl}
-              className="underline underline-offset-4"
+              className="text-dim underline underline-offset-4 hover:text-text"
             >
               {t('privacy')}
             </a>
           ) : (
-            <p className="opacity-50">
+            <p className="text-dim/60">
               {t('privacy')} — {t('pending')}
             </p>
           )}

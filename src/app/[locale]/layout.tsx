@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
-import {Geist, Geist_Mono} from 'next/font/google';
+import {Archivo} from 'next/font/google';
 import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {
   getMessages,
@@ -10,14 +10,16 @@ import {
 import {routing} from '@/i18n/routing';
 import '../globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin']
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin']
+/**
+ * Archivo (Omnibus-Type): grotesca latinoamericana dibujada para
+ * señalética y texto de alto rendimiento. Aguanta tracking muy cerrado
+ * en display sin perder legibilidad a 16px en pantalla pequeña, que es
+ * exactamente el reparto que pide esta página. Una familia, dos pesos.
+ */
+const archivo = Archivo({
+  variable: '--font-archivo',
+  subsets: ['latin'],
+  display: 'swap'
 });
 
 export function generateStaticParams() {
@@ -53,11 +55,8 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html
-      lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col">
+    <html lang={locale} className={`${archivo.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col bg-ink text-text">
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

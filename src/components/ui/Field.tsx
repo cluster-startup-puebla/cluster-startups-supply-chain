@@ -2,7 +2,7 @@ import type {ReactNode} from 'react';
 
 /**
  * Envoltura de campo: etiqueta, marca de opcional, control y error.
- * Los controles se pasan como hijos para que Field no tenga que conocer
+ * Los controles llegan como hijos para que Field no tenga que conocer
  * cada tipo de input.
  */
 type FieldProps = {
@@ -25,22 +25,23 @@ export default function Field({
 }: FieldProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="flex items-baseline gap-2 font-bold">
+      <label
+        htmlFor={id}
+        className="flex items-baseline gap-2 text-sm font-bold tracking-tight"
+      >
         {label}
         {optionalLabel ? (
-          <span className="text-sm font-normal text-muted">
-            {optionalLabel}
-          </span>
+          <span className="text-xs font-normal text-dim">{optionalLabel}</span>
         ) : null}
       </label>
       {children}
       {hint ? (
-        <p id={`${id}-hint`} className="text-sm text-muted">
+        <p id={`${id}-hint`} className="text-sm text-dim">
           {hint}
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="text-sm font-bold text-pink">
+        <p id={`${id}-error`} className="text-sm font-bold text-lift">
           {error}
         </p>
       ) : null}

@@ -23,21 +23,23 @@ export default function GapSection() {
   const t = useTranslations('gap');
 
   return (
-    <Section tone="paper">
+    <Section tone="craterSoft">
       <Container>
-        <div className="flex flex-col gap-6 sm:gap-12">
-          <Heading as="h2" size="lg" className="max-w-4xl">
+        <div className="flex flex-col gap-8 sm:gap-14">
+          <Heading as="h2" size="xl" className="max-w-3xl">
             {t('title')}
           </Heading>
 
-          <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
             {cases.map(({key, icon}) => (
               <Card key={key}>
-                <Icon name={icon} className="size-8 text-pink" />
-                <Heading as="h3" size="sm" className="mt-4">
+                <span className="flex size-11 items-center justify-center rounded-full border border-line bg-white/5 text-lift">
+                  <Icon name={icon} className="size-5" />
+                </span>
+                <Heading as="h3" size="md" className="mt-5">
                   {t(`${key}.title`)}
                 </Heading>
-                <Text className="mt-3" muted full>
+                <Text className="mt-3" dim full>
                   {t(`${key}.body`)}
                 </Text>
               </Card>

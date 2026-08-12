@@ -3,8 +3,9 @@ import type {ComponentPropsWithoutRef, ReactNode} from 'react';
 /**
  * Botón / enlace de acción.
  *
- * `outline` y `link` usan `currentColor`, así que funcionan igual sobre
- * fondo blanco, navy o rosa sin variantes adicionales.
+ * `primary` es el único elemento de la página que lleva rosa lleno, para
+ * que la conversión no compita con nada. `outline` y `link` usan
+ * `currentColor` y funcionan sobre cualquier bloque del mundo oscuro.
  *
  * Altura mínima 48px y ancho completo en móvil (regla dura del doc).
  */
@@ -13,7 +14,6 @@ type Variant = 'primary' | 'outline' | 'link';
 type BaseProps = {
   children: ReactNode;
   variant?: Variant;
-  /** Ancho completo también en escritorio. */
   block?: boolean;
   className?: string;
 };
@@ -27,14 +27,16 @@ type ButtonAsButton = BaseProps &
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const base =
-  'inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-6 text-base font-bold ' +
-  'transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ' +
+  'inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 text-base font-bold tracking-tight ' +
+  'transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-rosa ' +
   'disabled:cursor-not-allowed disabled:opacity-60';
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-pink text-white hover:bg-pink/90',
-  outline: 'border-2 border-current text-current hover:bg-current/10',
-  link: 'min-h-12 px-0 underline underline-offset-4 text-current hover:opacity-80'
+  primary:
+    'bg-rosa text-white shadow-[0_8px_28px_-8px_var(--rosa)] hover:bg-lift hover:shadow-[0_12px_34px_-8px_var(--magenta-lift)]',
+  outline:
+    'border border-[var(--line-strong)] text-current hover:border-lift hover:bg-white/5',
+  link: 'min-h-12 px-0 text-current underline decoration-rosa decoration-2 underline-offset-[6px] hover:text-lift'
 };
 
 export default function Button({

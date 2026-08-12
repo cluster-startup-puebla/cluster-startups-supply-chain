@@ -8,8 +8,9 @@ import Text from '@/components/ui/Text';
 /**
  * Sección 6 — por qué el clúster.
  *
- * Prueba, no promesa. Sobre Google y NVIDIA se afirma co-ubicación,
- * jamás propiedad ni sociedad (cajón 3 del inventario honesto).
+ * Prueba, no promesa. Sin tarjetas: una lista de filos, para que el
+ * bloque respire después de las cuatro rutas. Sobre Google y NVIDIA se
+ * afirma co-ubicación, jamás propiedad ni sociedad.
  */
 const items: readonly {key: string; icon: IconName}[] = [
   {key: 'infrastructure', icon: 'building'},
@@ -22,27 +23,25 @@ export default function Credibility() {
   const t = useTranslations('credibility');
 
   return (
-    <Section tone="paper" className="border-t border-hairline">
+    <Section tone="void">
       <Container>
-        <div className="flex flex-col gap-6 sm:gap-12">
-          <Heading as="h2" size="lg">
+        <div className="flex flex-col gap-8 sm:gap-14">
+          <Heading as="h2" size="xl">
             {t('title')}
           </Heading>
 
-          <ul className="grid gap-6 sm:gap-8 sm:grid-cols-2">
+          <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-[var(--line)] sm:grid-cols-2">
             {items.map(({key, icon}) => (
-              <li key={key} className="flex gap-4">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-pink/10 text-pink">
-                  <Icon name={icon} className="size-5" />
+              <li key={key} className="bg-ink p-6 sm:p-8">
+                <span className="flex size-10 items-center justify-center rounded-full border border-line bg-white/5 text-lift">
+                  <Icon name={icon} className="size-[1.15rem]" />
                 </span>
-                <div>
-                  <Heading as="h3" size="sm">
-                    {t(`items.${key}.title`)}
-                  </Heading>
-                  <Text className="mt-2" muted full>
-                    {t(`items.${key}.body`)}
-                  </Text>
-                </div>
+                <Heading as="h3" size="sm" className="mt-4">
+                  {t(`items.${key}.title`)}
+                </Heading>
+                <Text size="sm" className="mt-2" dim full>
+                  {t(`items.${key}.body`)}
+                </Text>
               </li>
             ))}
           </ul>
