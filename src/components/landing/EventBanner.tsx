@@ -5,25 +5,29 @@ import Container from '@/components/ui/Container';
 /**
  * Sección 0 — banner temporal del evento.
  *
- * El logo va a color original. Sobre la tinta, su texto negro se
- * perdería, así que lleva un contorno blanco hecho con `drop-shadow`
- * encadenados: cada uno desplaza la silueta y la pinta de blanco, de
- * modo que el filo sigue el recorte real del arte en lugar de encerrarlo
- * en un marco.
+ * El logo va a color original. Sobre la tinta su texto negro se
+ * perdería, así que lleva un filo blanco que lo separa del fondo.
+ *
+ * El filo viene HORNEADO en `logo-evento-filo.webp`, no de un filtro
+ * CSS. La versión anterior encadenaba cuatro `drop-shadow` de 0.75px y
+ * en Safari no se veía: WebKit redondea a cero los desplazamientos
+ * subpíxel de `drop-shadow`, así que las cuatro sombras caían justo
+ * debajo del arte. Hornearlo lo hace idéntico en todos los navegadores y
+ * ahorra cuatro filtros por pintado.
+ *
+ * El asset se regenera dilatando el canal alfa del original:
+ *   magick public/logo-evento.webp -alpha set -bordercolor none -border 20 \
+ *     \( +clone -alpha extract -morphology Dilate Disk:5 \
+ *        -background white -alpha shape \) \
+ *     +swap -composite -trim +repage -resize x300 \
+ *     public/logo-evento-filo.webp
+ *
+ * El radio va en escala del original (300px de alto). En pantalla el
+ * logo mide ~55px, así que Disk:5 se reduce a un filo de ~0.9px: subir
+ * el radio engorda el filo.
  *
  * Se retira con `siteConfig.eventBannerEnabled = false`.
  */
-/**
- * El grosor del filo es el desplazamiento de cada sombra. A 1px el
- * contorno competía con el arte; 0.75px lo adelgaza sin dejar de separar
- * el texto negro del fondo. Es la única perilla: subirlo engorda el filo.
- */
-const STROKE_WIDTH = '0.75px';
-
-const WHITE_STROKE =
-  `drop-shadow(${STROKE_WIDTH} 0 0 #fff) drop-shadow(-${STROKE_WIDTH} 0 0 #fff) ` +
-  `drop-shadow(0 ${STROKE_WIDTH} 0 #fff) drop-shadow(0 -${STROKE_WIDTH} 0 #fff)`;
-
 export default function EventBanner() {
   const t = useTranslations('eventBanner');
 
@@ -32,12 +36,11 @@ export default function EventBanner() {
       <Container className="py-5">
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
           <Image
-            src="/logo-evento.webp"
+            src="/logo-evento-filo.webp"
             alt={t('logoAlt')}
-            width={1108}
+            width={1082}
             height={300}
             className="h-[3.3rem] w-auto sm:h-[4.2rem]"
-            style={{filter: WHITE_STROKE}}
           />
           <p className="text-center text-xs font-bold leading-snug tracking-tight text-dim sm:text-sm">
             {t('stand')}
