@@ -1,6 +1,7 @@
 import {useTranslations} from 'next-intl';
 import Container from '@/components/ui/Container';
 import Logo from './Logo';
+import {toTelHref} from '@/lib/phone';
 import {siteConfig} from '@/config/site';
 
 /**
@@ -46,7 +47,7 @@ export default function SiteFooter() {
             )}
             {siteConfig.contact.phone ? (
               <a
-                href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
+                href={`tel:${toTelHref(siteConfig.contact.phone)}`}
                 className="text-base text-lift underline underline-offset-4"
               >
                 {siteConfig.contact.phone}

@@ -13,6 +13,7 @@ import CompanyLogo from '@/components/landing/CompanyLogo';
 import SiteFooter from '@/components/landing/SiteFooter';
 import SiteHeader from '@/components/landing/SiteHeader';
 import {Link} from '@/i18n/navigation';
+import {toTelHref} from '@/lib/phone';
 import {routing} from '@/i18n/routing';
 import {companies, getCompany, localize, type Company} from '@/data/companies';
 
@@ -114,7 +115,7 @@ function CompanyDetail({company}: {company: Company}) {
     {
       key: 'phone',
       value: company.contact?.phone,
-      href: (v: string) => `tel:${v.replace(/\s/g, '')}`,
+      href: (v: string) => `tel:${toTelHref(v)}`,
       external: false
     }
   ] as const;

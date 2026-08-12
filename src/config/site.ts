@@ -35,10 +35,10 @@ export const siteConfig: SiteConfig = {
     content: 'contenido'
   },
 
-  /** Pendientes de confirmación — ver sección 9 del documento de contexto. */
+  /** El nombre y el cargo viven en `messages.footer.contactName`. */
   contact: {
-    email: '',
-    phone: ''
+    email: 'rancholoko69@gmail.com',
+    phone: '+52 (275) 112-1666'
   },
 
   social: {
@@ -52,11 +52,7 @@ export const siteConfig: SiteConfig = {
 };
 
 export type ProfileKey =
-  | 'industry'
-  | 'startup'
-  | 'investor'
-  | 'academia'
-  | 'other';
+  'industry' | 'startup' | 'investor' | 'academia' | 'other';
 
 /** Orden de los perfiles en el select del formulario. */
 export const profileKeys: readonly ProfileKey[] = [

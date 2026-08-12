@@ -82,6 +82,23 @@ export function localize<T>(value: Record<Locale, T>, locale: string): T {
 /** Orden alfabético por nombre. */
 export const companies: readonly Company[] = [
   {
+    slug: 'karggu',
+    name: 'Karggu',
+    logo: '/empresas/karggu.webp',
+    industries: {
+      es: ['Logística', 'Paqueterías', 'Transporte de carga', 'Carta Porte'],
+      en: ['Logistics', 'Parcel carriers', 'Freight transport', 'Carta Porte']
+    },
+    problem: {
+      es: 'La paquetería genera las guías a mano, una por una, y la información de facturación vive repartida entre archivos y personas. El cliente no tiene visibilidad del status de sus entregas, así que llama para preguntar; los sobrecargos se documentan tarde y buena parte nunca se cobra. Y sin un lugar donde vivan los precios y acuerdos de cada cliente, cada cotización se negocia de nuevo.',
+      en: 'The carrier issues waybills by hand, one at a time, and billing information sits scattered across files and people. The customer has no visibility into delivery status, so they call to ask; surcharges get documented late and a good share is never billed. And with no single place holding each customer’s prices and agreements, every quote is renegotiated from scratch.'
+    },
+    solution: {
+      es: 'Una plataforma que conecta a los tres actores del envío. La paquetería vincula ventas y operación en un solo lugar; el cliente genera, visualiza y sigue sus envíos y controla su gasto logístico en autoservicio; el destinatario rastrea su paquete, recibe la notificación de entrega y reporta incidencias por daño. Trae tracking, Carta Porte, control de saldos por cliente y báscula inteligente, con usuarios, almacenes, vehículos, rutas y operadores ilimitados. Se cobra por guía generada.',
+      en: 'A platform that connects the three parties in a shipment. The carrier links sales and operations in one place; the customer creates, views and tracks shipments and controls logistics spend through self-service; the recipient tracks the parcel, gets the delivery notification and reports damage incidents. It includes tracking, Carta Porte, per-customer balance control and a smart scale, with unlimited users, warehouses, vehicles, routes and operators. Billing is per waybill generated.'
+    }
+  },
+  {
     slug: 'kotemah',
     name: 'Kotemah',
     logo: '/empresas/kotemah.webp',
