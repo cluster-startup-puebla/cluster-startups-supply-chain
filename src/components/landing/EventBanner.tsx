@@ -7,15 +7,22 @@ import Container from '@/components/ui/Container';
  *
  * El logo va a color original. Sobre la tinta, su texto negro se
  * perdería, así que lleva un contorno blanco hecho con `drop-shadow`
- * encadenados: cada uno desplaza la silueta un píxel y la pinta de
- * blanco, de modo que el filo sigue el recorte real del arte en lugar de
- * encerrarlo en un marco.
+ * encadenados: cada uno desplaza la silueta y la pinta de blanco, de
+ * modo que el filo sigue el recorte real del arte en lugar de encerrarlo
+ * en un marco.
  *
  * Se retira con `siteConfig.eventBannerEnabled = false`.
  */
+/**
+ * El grosor del filo es el desplazamiento de cada sombra. A 1px el
+ * contorno competía con el arte; 0.75px lo adelgaza sin dejar de separar
+ * el texto negro del fondo. Es la única perilla: subirlo engorda el filo.
+ */
+const STROKE_WIDTH = '0.75px';
+
 const WHITE_STROKE =
-  'drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) ' +
-  'drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff)';
+  `drop-shadow(${STROKE_WIDTH} 0 0 #fff) drop-shadow(-${STROKE_WIDTH} 0 0 #fff) ` +
+  `drop-shadow(0 ${STROKE_WIDTH} 0 #fff) drop-shadow(0 -${STROKE_WIDTH} 0 #fff)`;
 
 export default function EventBanner() {
   const t = useTranslations('eventBanner');
