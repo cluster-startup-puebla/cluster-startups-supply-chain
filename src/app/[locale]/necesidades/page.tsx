@@ -23,7 +23,17 @@ export async function generateMetadata({
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'form'});
 
-  return {title: t('title'), description: t('subtitle')};
+  return {
+    metadataBase: new URL('https://cluster-startups-supply-chain.vercel.app'),
+    title: t('title'),
+    description: t('subtitle'),
+    openGraph: {
+      title: t('title'),
+      description: t('subtitle'),
+      url: `https://cluster-startups-supply-chain.vercel.app/${locale}/necesidades`,
+      type: 'website'
+    }
+  };
 }
 
 /**

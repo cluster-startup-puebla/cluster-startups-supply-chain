@@ -37,10 +37,22 @@ export async function generateMetadata({
   const t = await getTranslations({locale, namespace: 'companies'});
 
   return {
+    metadataBase: new URL('https://cluster-startups-supply-chain.vercel.app'),
     title: company.name,
     description: company.solution
       ? localize(company.solution, locale)
-      : t('pendingNote')
+      : t('pendingNote'),
+    openGraph: {
+      title: company.name,
+      description: company.solution
+        ? localize(company.solution, locale)
+        : t('pendingNote'),
+      url: `https://cluster-startups-supply-chain.vercel.app/${locale}/empresas/${slug}`,
+      images: company.logo
+        ? [{url: company.logo, alt: company.name}]
+        : [],
+      type: 'website'
+    }
   };
 }
 
